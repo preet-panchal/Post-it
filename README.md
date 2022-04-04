@@ -1,5 +1,18 @@
 # Post-it
 CSCI3230U Final Project - Group 19
+# About Us
+
+- - Our team consists of the following members, with their contributions listed:
+    - Preet Panchal ([preet-panchal](https://github.com/preet-panchal))
+      
+    - Eihab Syed ([EihabSyed](https://github.com/EihabSyed))
+      
+    - Kaathihan Luxmachandran ([Kaathihan](https://github.com/Kaathihan))
+    
+    - 
+
+    - 
+
 
 
 cd into server and run npm install
