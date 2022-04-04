@@ -2,10 +2,12 @@
   "name": "post-it",
   "version": "1.0.0",
   "description": "csci3230u final project",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node server/index.js",
-    "dev": "nodemon server/index.js"
+    "start": "node server/server.js",
+    "server": "nodemon server/server.js",
+    "client": "npm run serve --prefix ../client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -24,6 +26,7 @@
     "mongodb": "^4.4.1"
   },
   "devDependencies": {
+    "concurrently": "^7.1.0",
     "nodemon": "^2.0.15"
   }
 }
