@@ -20,8 +20,8 @@
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
-                        <button class="button is-medium">Sign Up</button>
-                        <button class="button is-medium">Log In</button>
+                        <button class="button is-medium" @click="redirectToRegister()">Sign Up</button>
+                        <button class="button is-medium" @click="redirectToLogIn()">Log In</button>
                     </div>
                 </div>
             </div>
@@ -33,6 +33,14 @@
 
 export default {
     name: 'AppNavigation',
+    methods: {
+        redirectToRegister() {
+        this.$router.push({ path: '/register' });
+        },
+        redirectToLogIn() {
+        this.$router.push({ path: '/login' });
+        }
+  }
 }
 </script>
 
