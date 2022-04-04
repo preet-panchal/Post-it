@@ -2,7 +2,7 @@
 CSCI3230U Final Project - Group 19
 # About Us
 
-- - Our team consists of the following members, with their contributions listed:
+- - Our team consists of the following members:
     - Preet Panchal ([preet-panchal](https://github.com/preet-panchal))
       
     - Eihab Syed ([EihabSyed](https://github.com/EihabSyed))
