@@ -1,5 +1,6 @@
 <template>
-  <div class="form-wrap">
+  <LoginPage />
+  <!-- <div class="form-wrap">
     <form class="login">
       <p class="login-register">
         Don't have an account?
@@ -20,21 +21,25 @@
       <div class="angle"></div>
     </form>
     <div class="background"></div>
-  </div>
+  </div> -->
 </template>
 
 <script>
+import LoginPage from '@/components/LoginPage.vue'
 
 export default {
   name: "LoginView",
-  data() {
+  components: {
+    LoginPage
+  }
+  /* data() {
     return {
       email: "",
       password: "",
       error: null,
       errorMsg: "",
     };
-  }
+  } */
 };
 </script>
 

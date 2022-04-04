@@ -1,17 +1,13 @@
 <template>
     <div>
         <h1>Log in to create a post!</h1>
-        <div class="header">
-            <h1>Trending Posts</h1>
-            <i class="fa-solid fa-arrow-trend-up fa-2xl"></i>
-        </div>
     </div>
 </template>
 
 <script>
 
 export default {
-    name: "PostsView"
+    name: "ProfileView"
 };
 </script>
 

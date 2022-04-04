@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <router-link class="navbar-item " to="/">Post-It</router-link>
+            <router-link class="navbar-item header" to="/">p/Post-It</router-link>
 
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                 <span aria-hidden="true"></span>
@@ -13,7 +13,7 @@
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start navbar-item">
                 <router-link class="route" to="/">Home</router-link>
-                <router-link class="route" to="/posts">Posts</router-link>
+                <router-link class="route" to="/profile">Profile</router-link>
                 <router-link class="route" to="/about">About</router-link>
             </div>
 
@@ -73,4 +73,9 @@ export default {
     }
 }
 
+.header {
+    font-weight: 600;
+    font-size: 32px;
+    text-decoration: none;
+}
 </style>

@@ -1,5 +1,9 @@
 <template>
   <div class="hello">
+    <div class="header">
+            <h1>Trending Posts</h1>
+            <i class="fa-solid fa-arrow-trend-up fa-2xl"></i>
+    </div>
     <h1>{{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>

@@ -1,6 +1,5 @@
 <template>
-    <RegisterPage />
-  <!-- <div class="form-wrap">
+  <div class="form-wrap">
     <form class="register">
         <p class="login-register">
             Already have an account?
@@ -26,27 +25,20 @@
         <div class="input">
             <i class="fas fa-lock"></i>
             <input type="password" placeholder="Password" />
-        </div> -->
+        </div>
         <!-- <div v-show="error" class="error">{{ this.errorMsg }}</div> -->
-        <!-- <button class="button is-medium" @click.prevent="register">Sign Up</button>
+        <button class="button is-medium" @click.prevent="register">Sign Up</button>
         <div class="angle"></div>
     </form>
     <div class="background"></div>
-  </div> -->
+  </div>
 </template>
 
 <script>
-/* import email from "../assets/icons/envelope-regular.svg";
-import password from "../assets/icons/lock-alt-solid.svg";
-import user from "../assets/icons/user-alt-light.svg"; */
-import RegisterPage from '@/components/RegisterPage.vue'
 
 export default {
-  name: "RegisterView",
-  components: {
-      RegisterPage
-  }
-  /* data() {
+  name: "RegisterPage",
+  data() {
     return {
       firstName: "",
       lastName: "",
@@ -56,14 +48,6 @@ export default {
       error: null,
       errorMsg: "",
     };
-  }, */
+  },
 };
 </script>
-
-<style lang="scss" scoped>
-.register {
-  h2 {
-    max-width: 350px;
-  }
-}
-</style>
