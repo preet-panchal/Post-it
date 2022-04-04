@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import LoginView from '../views/LoginView.vue'
 import ResetPasswordView from '../views/ResetPasswordView.vue'
+import PostsView from '../views/PostsView.vue'
 
 const routes = [
   {
@@ -36,7 +37,7 @@ const routes = [
   {
     path: '/posts',
     name: 'posts',
-    component: HomeView
+    component: PostsView
   }
 ]
 

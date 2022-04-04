@@ -16,7 +16,7 @@
       </div>
       <div v-show="error" class="error">{{ this.errorMsg }}</div>
       <router-link class="forgot-password" to="/reset-password">Forgot your password?</router-link>
-      <button class="button" @click.prevent="signIn">Sign In</button>
+      <button class="button is-medium" @click.prevent="signIn">Sign In</button>
       <div class="angle"></div>
     </form>
     <div class="background"></div>
@@ -57,6 +57,7 @@ export default {
     }
   }
   form {
+    font-size: 20px;
     padding: 0 10px;
     position: relative;
     display: flex;
@@ -80,7 +81,7 @@ export default {
       text-decoration: none;
       color: #000;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 20px;
       margin: 16px 0 32px;
       border-bottom: 1px solid transparent;
       transition: 0.5s ease all;
@@ -105,7 +106,7 @@ export default {
     display: none;
     flex: 2;
     background-size: cover;
-    background-image: url("../assets/background.png");
+    background-image: url("../assets/test.jpg");
     width: 100%;
     height: 100%;
     @media (min-width: 900px) {
@@ -119,9 +120,12 @@ export default {
     max-width: 350px;
     padding: 15px;
     background-color: #f2f7f6;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    max-height: 50px;
+    height: 100%;
     input {
         margin-left: 5px;
+        font-size: 20px;
         width: 90%;
         border: none;
         background-color: #f2f7f6;

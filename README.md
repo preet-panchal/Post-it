@@ -17,4 +17,4 @@ CSCI3230U Final Project - Group 19
 # How to run
 cd into server and run npm install
 cd into client and run npm install
-cd into root and run npm run dev to concurrently run client and server
+cd into server and run npm run dev to concurrently run client and server

@@ -14,14 +14,11 @@
             <i class="fas fa-envelope"></i>
             <input type="text" placeholder="Email"/>
         </div>
-        <button class="button" @click.prevent="resetPassword">Reset</button>
+        <button class="button is-medium" @click.prevent="resetPassword">Reset</button>
         <div class="angle"></div>
       </form>
       <div class="background"></div>
     </div>
-    <span class="icon">
-        <i class="fas fa-home"></i>
-    </span>
   </div>
 </template>
 

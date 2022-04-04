@@ -27,7 +27,7 @@
             <input type="password" placeholder="Password" />
         </div>
         <!-- <div v-show="error" class="error">{{ this.errorMsg }}</div> -->
-        <button class="button" @click.prevent="register">Sign Up</button>
+        <button class="button is-medium" @click.prevent="register">Sign Up</button>
         <div class="angle"></div>
     </form>
     <div class="background"></div>
@@ -41,6 +41,17 @@ import user from "../assets/icons/user-alt-light.svg"; */
 
 export default {
   name: "RegisterView",
+  data() {
+    return {
+      firstName: "",
+      lastName: "",
+      username: "",
+      email: "",
+      password: "",
+      error: null,
+      errorMsg: "",
+    };
+  },
 };
 </script>
 
