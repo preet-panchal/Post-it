@@ -9,7 +9,7 @@
           <router-link class="router-link forgot-password" to="/login">Login</router-link>
         </p>
         <h2>Reset Password</h2>
-        <p>Forgot your passowrd? Enter your email to reset it</p>
+        <p class="reset-message">Enter your email to reset your password</p>
         <div class="input">
             <i class="fas fa-envelope"></i>
             <input type="text" placeholder="Email"/>
@@ -35,3 +35,20 @@ export default {
   }
 };
 </script>
+
+<style scoped lang="scss">
+.reset-password {
+  position: relative;
+  .form-wrap {
+    .reset {
+      h2 {
+        margin-bottom: 8px;
+      }
+      p {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+</style>

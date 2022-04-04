@@ -26,7 +26,7 @@ export default {
     width: 100%;
   }
   .login-register {
-    margin-bottom: 32px;
+    margin-bottom: 20px;
     .router-link {
       color: #000;
     }
@@ -47,7 +47,7 @@ export default {
       text-align: center;
       font-size: 32px;
       color: #303030;
-      margin-bottom: 40px;
+      margin-bottom: 20px;
       @media (min-width: 900px) {
         font-size: 40px;
       }

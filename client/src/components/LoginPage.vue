@@ -5,7 +5,7 @@
         Don't have an account?
         <router-link class="router-link forgot-password" to="/register">Register</router-link>
       </p>
-      <h2>Login to FireBlogs</h2>
+      <h2>Login to Post-It</h2>
       <div class="input">
         <i class="fas fa-envelope"></i>
         <input type="text" placeholder="Email"/>
