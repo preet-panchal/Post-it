@@ -3,8 +3,6 @@
 </template>
 
 <script>
-/* import Modal from "../components/Modal";
-import Loading from "../components/Loading"; */
 import ResetPasswordPage from '@/components/ResetPasswordPage.vue'
 export default {
   name: "ResetPasswordView",

@@ -20,12 +20,8 @@
 </template>
 
 <script>
-/* import BlogPost from "../components/BlogPost";
-import BlogCard from "../components/BlogCard";
-import Arrow from "../assets/Icons/arrow-right-light.svg"; */
 export default {
   name: "AboutView",
-  //components: { BlogPost, BlogCard, Arrow },
   data() {
     return {
       welcomeScreen: {
