@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <router-link class="navbar-item header" to="/">p/Post-It</router-link>
+            <router-link class="navbar-item header" to="/"><img src="../assets/logo.png">/Post-It</router-link>
 
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                 <span aria-hidden="true"></span>
@@ -77,5 +77,10 @@ export default {
     font-weight: 600;
     font-size: 32px;
     text-decoration: none;
+}
+
+img {
+    max-height: 100%;
+    width: 75px;
 }
 </style>

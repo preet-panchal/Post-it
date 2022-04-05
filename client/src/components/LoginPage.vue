@@ -16,7 +16,7 @@
       </div>
       <div v-show="error" class="error">{{ this.errorMsg }}</div>
       <router-link class="forgot-password" to="/reset-password">Forgot your password?</router-link>
-      <button class="button is-medium" @click.prevent="signIn">Sign In</button>
+      <button class="button is-medium" @click.prevent="signIn">Log In</button>
       <div class="angle"></div>
     </form>
     <div class="background"></div>
