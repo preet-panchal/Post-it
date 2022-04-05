@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Log in to create a post!</h1>
+        <h1>Log in to see your posts and to create new posts!</h1>
     </div>
 </template>
 
