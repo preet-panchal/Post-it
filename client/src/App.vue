@@ -4,17 +4,20 @@
       <AppNavigation/>
       <router-view />
       <!-- <Footer v-if="!navigation" /> -->
+      <AppFooter/>
     </div>
   </div>
 </template>
 
 <script>
 import AppNavigation from './components/AppNavigation.vue'
+import AppFooter from './components/AppFooter.vue'
 
 export default {
   name: 'App',
   components: {
-    AppNavigation
+    AppNavigation,
+    AppFooter
   }
 }
 </script>

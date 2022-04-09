@@ -3,7 +3,7 @@
         <div class="navbar-brand">
             <router-link class="navbar-item header" to="/"><img src="../assets/logo.png">/Post-It</router-link>
 
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <a role="button" class="navbar-burger" aria-expanded="false" data-target="navbarBasicExample">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
