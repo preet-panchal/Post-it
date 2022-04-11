@@ -1,5 +1,7 @@
 <template>
-  <LoginPage />
+  <div>
+    <LoginPage />
+  </div>
 </template>
 
 <script>

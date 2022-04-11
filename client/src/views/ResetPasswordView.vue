@@ -1,5 +1,7 @@
 <template>
+  <div>
     <ResetPasswordPage />
+  </div>
 </template>
 
 <script>

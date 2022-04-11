@@ -35,12 +35,12 @@ export default {
     name: 'AppNavigation',
     methods: {
         redirectToRegister() {
-        this.$router.push({ path: '/register' });
+            this.$router.push({ path: '/register' });
         },
         redirectToLogIn() {
-        this.$router.push({ path: '/login' });
+            this.$router.push({ path: '/login' });
         }
-  }
+    }
 }
 </script>
 

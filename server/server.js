@@ -5,38 +5,53 @@ const app = express();
 const bodyParser = require("body-parser");
 
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, '../client/public')));
-app.use(express.static("../client/src/views"));
-app.use(express.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 
 // place holder for the data
 const users = [
   {
-    id: "1",
+    userid: "1",
     firstName: "first1",
     lastName: "last1",
-    email: "abc@gmail.com"
+    email: "first@gmail.com",
+    posts: [
+      {
+        postid: "11",
+        title: "post1",
+        body: "post1"
+      }
+    ]
   },
   {
-    id: "2",
+    userid: "2",
     firstName: "first2",
     lastName: "last2",
-    email: "abc@gmail.com"
+    email: "second@gmail.com",
+    posts: [
+      {
+        postid: "21",
+        title: "post2",
+        body: "post2"
+      }
+    ]
   },
   {
-    id: "3",
+    userid: "3",
     firstName: "first3",
     lastName: "last3",
-    email: "abc@gmail.com"
+    email: "third@gmail.com",
+    posts: [
+      
+    ]
   }
 ];
 
-app.get('/api/users', (req, res) => {
-  console.log('api/users called!!!!!!!')
+app.get('/api/posts', (req, res) => {
+  console.log('api/posts called!!!!!!!')
   res.json(users);
 });
 
-app.post('/api/user', (req, res) => {
+app.post('/api/post', (req, res) => {
   const user = req.body.user;
   user.id = randomId(10);
   console.log('Adding user:::::', user);
@@ -45,11 +60,16 @@ app.post('/api/user', (req, res) => {
 });
 
 app.get('/', (req,res) => {
-  console.log(path.join(__dirname, '../client/public/index.html'));
-  res.sendFile(path.join(__dirname, '../client/public/index.html'));
+  console.log("jj");
+  //res.send(users);
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
 
 app.set('port', process.env.PORT || 3000);
 app.listen(app.get('port'), function() {
     console.log(`Listening for requests on port ${app.get('port')}.`);
 });
+
+app.use(express.static(path.join(__dirname, '../client/dist')));
+
+app.get('*', (req, res) => res.sendFile(path.resolve('../client', 'dist', 'index.html')));
