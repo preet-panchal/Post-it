@@ -19,13 +19,13 @@
   </div> -->
   <section class="hero is-danger is-fullheight">
   <div class="hero-body">
-    <div class="">
-      <p class="title">
-        Fullheight hero
-      </p>
-      <p class="subtitle">
-        Fullheight subtitle
-      </p>
+    <div class="has-text-centered">
+      <h1 class="title">
+        Have something on your mind?
+      </h1>
+      <h2 class="subtitle has-text-warning animate-character">
+        /Post-It. 
+      </h2>
     </div>
   </div>
   </section>
@@ -60,4 +60,43 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.hero {
+  background-image: url("../assets/about-cover.jpeg");
+  background-size: cover; 
+  text-align: center;
+}
+.title {
+  font-size: 85px;
+}
+.subtitle {
+  font-weight: bolder;
+  float: left;
+}
+.animate-character
+{
+  
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 4s linear infinite;
+  display: inline-block;
+      font-size: 190px;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
 </style>
