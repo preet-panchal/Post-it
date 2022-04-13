@@ -1,22 +1,34 @@
 <template>
-  <div class="home">
-<!--     <BlogPost v-if="!user" :post="welcomeScreen" />
-    <BlogPost :post="post" v-for="(post, index) in blogPostsFeed" :key="index" /> -->
+  <!-- <div class="home">
+    <BlogPost v-if="!user" :post="welcomeScreen" />
+    <BlogPost :post="post" v-for="(post, index) in blogPostsFeed" :key="index" />
     <div class="blog-card-wrap">
       <div class="container">
         <h3>View More Recent Blogs</h3>
         <div class="blog-cards">
-<!--           <BlogCard :post="post" v-for="(post, index) in blogPostsCards" :key="index" /> -->
+          <BlogCard :post="post" v-for="(post, index) in blogPostsCards" :key="index" />
         </div>
       </div>
     </div>
     <div v-if="!user" class="updates">
       <div class="container">
         <h2>never miss a post. Register for your free account today!</h2>
-        <!-- <router-link class="router-button" to="#"> Register for FireBlogs <Arrow class="arrow arrow-light" /> </router-link> -->
+        <router-link class="router-button" to="#"> Register for FireBlogs <Arrow class="arrow arrow-light" /> </router-link>
       </div>
     </div>
+  </div> -->
+  <section class="hero is-danger is-fullheight">
+  <div class="hero-body">
+    <div class="">
+      <p class="title">
+        Fullheight hero
+      </p>
+      <p class="subtitle">
+        Fullheight subtitle
+      </p>
+    </div>
   </div>
+  </section>
 </template>
 
 <script>
