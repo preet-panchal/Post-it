@@ -63,7 +63,10 @@ export default {
 .hero {
   background-image: url("../assets/about-cover.jpeg");
   background-size: cover; 
-  text-align: center;
+  opacity: 0.9;
+}
+.hero:hover {
+  opacity: 1.0;
 }
 .title {
   font-size: 85px;
@@ -71,6 +74,7 @@ export default {
 .subtitle {
   font-weight: bolder;
   float: left;
+  opacity: 1.0;
 }
 .animate-character
 {
