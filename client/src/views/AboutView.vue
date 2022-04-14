@@ -86,18 +86,21 @@ export default {
   background-image: url("../assets/about-cover.jpeg");
   background-size: cover; 
   opacity: 0.9;
+  &:hover {
+    opacity: 1.0;
+  }
 }
-.hero:hover {
-  opacity: 1.0;
-}
+
 .header-1 {
   font-size: 85px;
 }
+
 .header-2 {
   font-weight: bolder;
   float: left;
   opacity: 1.0;
 }
+
 .animate-character
 {
   
@@ -123,6 +126,13 @@ export default {
 @keyframes textclip {
   to {
     background-position: 200% center;
+  }
+}
+
+.column img {
+  opacity: 1.0;
+  &:hover {
+    opacity: 0.7;
   }
 }
 
