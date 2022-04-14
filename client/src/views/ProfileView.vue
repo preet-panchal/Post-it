@@ -14,22 +14,22 @@
         </div> -->
         <div class="dashboard tabs is-toggle is is-centered is-halfwidth is-large">
             <ul>
-                <li>
-                <a v-on:click="showDashboard" :class="{ active: isDashboardHidden }" class="option">
+                <li :class="{ active: isDashboardHidden }">
+                <a v-on:click="showDashboard" class="option">
                     <span class="icon"><i class="fas fa-user" aria-hidden="true"></i></span>
-                    <span>Dashboard</span>
+                    <span class="option">Dashboard</span>
                 </a>
                 </li>
-                <li>
-                <a v-on:click="showCreate" :class="{ active: isCreateHidden }" class="option">
+                <li :class="{ active: isCreateHidden }">
+                <a v-on:click="showCreate" class="option">
                     <span class="icon"><i class="fas fa-pen-to-square" aria-hidden="true"></i></span>
-                    <span>Create</span>
+                    <span class="option">Create</span>
                 </a>
                 </li>
-                <li>
-                <a v-on:click="showAnalytics" :class="{ active: isAnalyticsHidden }" class="option">
+                <li :class="{ active: isAnalyticsHidden }">
+                <a v-on:click="showAnalytics" class="option">
                     <span class="icon"><i class="fas fa-chart-line" aria-hidden="true"></i></span>
-                    <span>Analytics</span>
+                    <span class="option">Analytics</span>
                 </a>
                 </li>
             </ul>
@@ -82,7 +82,7 @@
 <script>
 import ErrorPopup from '../components/ErrorPopup.vue'
 import SuccessPopup from '../components/SuccessPopup.vue'
-import { api } from '../apis/api';
+// import { api } from '../apis/api';
 
 export default {
     name: "ProfileView",
@@ -109,7 +109,7 @@ export default {
             this.isDashboardHidden = true;
             this.isCreateHidden = false;
             this.isAnalyticsHidden = false;
-            this.usersPosts = await api.getPostsByUser('6257397b5d0e39067499ad30');
+            // this.usersPosts = await api.getPostsByUser('6257397b5d0e39067499ad30');
         },
         showCreate() {
             this.isDashboardHidden = false;
@@ -121,7 +121,7 @@ export default {
             this.isCreateHidden = false
             this.isAnalyticsHidden = true;
         },
-        async createPost() {
+        /*async createPost() {
             var payload = {title: this.title, body: this.body, upvotes: 0, downvotes: 0, author: this.user[0].firstName + " " + this.user[0].lastName, userid: '6257397b5d0e39067499ad30'};
             try {
                 await api.createPost(payload);
@@ -134,12 +134,12 @@ export default {
                 this.failure = true;
                 setTimeout(() => this.failure = false, 2000);
             }
-        }
+        }*/
     },
-    async mounted() {
+    /*async mounted() {
         this.usersPosts = await api.getPostsByUser('6257397b5d0e39067499ad30');
         this.user = await api.getUserById('6257397b5d0e39067499ad30');
-    }
+    }*/
 };
 </script>
 
@@ -215,7 +215,7 @@ hr {
 }
 
 .active {
-    color: #fbd758;
+  background-color: #fbd758;
 }
 
 .x {
