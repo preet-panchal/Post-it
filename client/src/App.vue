@@ -4,7 +4,6 @@
       <AppNavigation/>
       <router-view />
       <!-- <Footer v-if="!navigation" /> -->
-      <h1>sdfdsfdsf</h1>
       <AppFooter/>
     </div>
   </div>
