@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="profile">
         <transition name="error">
             <ErrorPopup v-if="failure" msg="Error: Title must be unique and body cannot be empty!"/>
         </transition>
@@ -15,21 +15,21 @@
         <div class="dashboard tabs is-toggle is is-centered is-halfwidth is-large">
             <ul>
                 <li>
-                <a>
+                <a v-on:click="showDashboard" :class="{ active: isDashboardHidden }" class="option">
                     <span class="icon"><i class="fas fa-user" aria-hidden="true"></i></span>
-                    <span v-on:click="showDashboard" :class="{ active: isDashboardHidden }" class="option">Dashboard</span>
+                    <span>Dashboard</span>
                 </a>
                 </li>
                 <li>
-                <a>
+                <a v-on:click="showCreate" :class="{ active: isCreateHidden }" class="option">
                     <span class="icon"><i class="fas fa-pen-to-square" aria-hidden="true"></i></span>
-                    <span v-on:click="showCreate" :class="{ active: isCreateHidden }" class="option">Create</span>
+                    <span>Create</span>
                 </a>
                 </li>
                 <li>
-                <a>
+                <a v-on:click="showAnalytics" :class="{ active: isAnalyticsHidden }" class="option">
                     <span class="icon"><i class="fas fa-chart-line" aria-hidden="true"></i></span>
-                    <span v-on:click="showAnalytics" :class="{ active: isAnalyticsHidden }" class="option">Analytics</span>
+                    <span>Analytics</span>
                 </a>
                 </li>
             </ul>
@@ -82,7 +82,7 @@
 <script>
 import ErrorPopup from '../components/ErrorPopup.vue'
 import SuccessPopup from '../components/SuccessPopup.vue'
-// import { api } from '../apis/api';
+import { api } from '../apis/api';
 
 export default {
     name: "ProfileView",
@@ -109,7 +109,7 @@ export default {
             this.isDashboardHidden = true;
             this.isCreateHidden = false;
             this.isAnalyticsHidden = false;
-            // this.usersPosts = await api.getPostsByUser('6257397b5d0e39067499ad30');
+            this.usersPosts = await api.getPostsByUser('6257397b5d0e39067499ad30');
         },
         showCreate() {
             this.isDashboardHidden = false;
@@ -121,7 +121,7 @@ export default {
             this.isCreateHidden = false
             this.isAnalyticsHidden = true;
         },
-        /*async createPost() {
+        async createPost() {
             var payload = {title: this.title, body: this.body, upvotes: 0, downvotes: 0, author: this.user[0].firstName + " " + this.user[0].lastName, userid: '6257397b5d0e39067499ad30'};
             try {
                 await api.createPost(payload);
@@ -134,17 +134,21 @@ export default {
                 this.failure = true;
                 setTimeout(() => this.failure = false, 2000);
             }
-        }*/
+        }
     },
-    /*async mounted() {
+    async mounted() {
         this.usersPosts = await api.getPostsByUser('6257397b5d0e39067499ad30');
         this.user = await api.getUserById('6257397b5d0e39067499ad30');
-    }*/
+    }
 };
 </script>
 
 
 <style lang="scss" scoped>
+
+.profile {
+    margin-bottom: 50px;
+}
 
 .dashboard {
     display: inline-flex;
@@ -154,7 +158,6 @@ export default {
 .option {
     padding-right: 20px;
     padding-left: 20px;
-    cursor: pointer;
 }
 
 .content {
