@@ -5,7 +5,6 @@
         <video muted autoplay loop id="background-video">
          <!--  <source src="../assets/forest.mp4" type="video/mp4">
           <source src="../assets/earth.mp4" type="video/mp4"> -->
-          <source src="../assets/water.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
         <div class="overlay">
