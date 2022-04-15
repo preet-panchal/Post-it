@@ -3,13 +3,13 @@
 
     <div class="video is-fullheight">
         <video muted autoplay loop id="background-video">
-         <!--  <source src="../assets/forest.mp4" type="video/mp4">
-          <source src="../assets/earth.mp4" type="video/mp4"> -->
+<!--          <source src="../assets/forest.mp4" type="video/mp4"> -->
+          <source src="../assets/earth.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
         <div class="overlay">
           <div>
-            <p>Stay connected to the world. /post-it</p>
+            <p>Stay connected to the world.</p>
             <p>Scroll down to see trending posts!</p>
           </div>
         </div>
@@ -35,7 +35,6 @@
           <p class="views">{{post.upvotes}}</p>
           <button><i class="fa-solid fa-chevron-down btn"></i></button>
           <p class="views">{{post.downvotes}}</p>
-          <button><i class="fa-solid fa-x x"></i></button>
         </div>
       </div>
   </div>
@@ -59,7 +58,6 @@ export default {
   },
   async mounted() {
     this.posts = await api.getPosts();
-    console.log(this.posts)
   }
 }
 </script>
@@ -106,10 +104,10 @@ hr {
 }
 
 .video {
-  opacity: 0.8;
-/*   &:hover {
+  opacity: 0.9;
+  &:hover {
     opacity: 1.0;
-  } */
+  }
 }
 
 /* .video { 
@@ -124,12 +122,27 @@ hr {
   top: 0;
   left: 0;
   z-index: 1;
-  font-size: 75px;
+  font-size: 80px;
+  font-weight: bold;
   display: flex;
   height: 100%;
   width: 100%;
   justify-content: center;
   align-items: center;
   color: #fff;
+
+  background: 50% 100% / 50% 50% no-repeat
+              radial-gradient(ellipse at bottom, #fff, transparent, transparent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: reveal 3000ms ease-in-out forwards 200ms,
+             glow 2500ms linear infinite 2000ms;
+
+  @keyframes reveal {
+    100% {
+      background-size: 300% 300%;
+    }
+  }
 }
 </style>
