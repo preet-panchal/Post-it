@@ -3,7 +3,7 @@
     <section class="hero is-danger is-fullheight">
     <div class="hero-body">
       <div class="has-text-centered">
-        <h1 class="title header-1">
+        <h1 class="header-1 overlay">
           Have something on your mind?
         </h1>
         <h2 class="subtitle header-2 has-text-warning animate-character">
@@ -95,17 +95,33 @@ export default {
 
 .header-1 {
   font-size: 85px;
+  font-weight: bolder;
+  color: #fff;
 }
 
 .header-2 {
-  font-weight: bolder;
   float: left;
-  opacity: 1.0;
+  font-size: 190px;
+  font-weight: bolder;
+  color: #fff;
 }
 
-.animate-character
-{
-  
+.overlay {
+  animation: fadeInAnimation ease 4.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+
+  @keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+  }
+}
+
+.animate-character {
   background-image: linear-gradient(
     -225deg,
     #231557 0%,
@@ -116,18 +132,16 @@ export default {
   background-size: auto auto;
   background-clip: border-box;
   background-size: 200% auto;
-  color: #fff;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: textclip 4s linear infinite;
   display: inline-block;
-      font-size: 190px;
-}
-
-@keyframes textclip {
-  to {
-    background-position: 200% center;
+  
+  @keyframes textclip {
+    to {
+      background-position: 200% center;
+    }
   }
 }
 
