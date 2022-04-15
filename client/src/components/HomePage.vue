@@ -156,8 +156,12 @@ $base: 0.6rem;
 
 .container {
   display: flex;
+  flex: 0;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
+  bottom: 0; 
 }
 
 .chevron {
