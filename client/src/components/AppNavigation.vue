@@ -48,6 +48,7 @@ export default {
 <style scoped lang="scss">
 .navbar, .navbar-menu {
     background-color: #36476b;
+    z-index: 4;
 }
 .navbar-item, .navbar-burger {
     color: #fbd758;

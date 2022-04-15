@@ -1,16 +1,30 @@
 <template>
   <div class="home">
+
+    <div class="video is-fullheight">
+        <video muted autoplay loop id="background-video">
+         <!--  <source src="../assets/forest.mp4" type="video/mp4">
+          <source src="../assets/earth.mp4" type="video/mp4"> -->
+          <source src="../assets/water.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="overlay">
+          <div>
+            <p>Stay connected to the world. /post-it</p>
+            <p>Scroll down to see trending posts!</p>
+          </div>
+        </div>
+    </div>
     <div class="header">
       <h1>Trending Posts <i class="fa-solid fa-arrow-trend-up fa-md"></i></h1>    
     </div>
-    <div v-for="user in getPosts" :key="user.userid">
-      <div v-for="post in user.posts" :key="post.postid" class="post-card">
+    <div v-for="post in posts" :key="post.postid" class="post-card">
         <div class="title">
           <p>{{post.title}}</p>
         </div>
         <hr>
         <div class="author">
-          <p>{{user.firstName}} {{user.lastName}}</p>
+          <p>{{post.author}}</p>
         </div>
         <hr>
         <div class="body">
@@ -22,14 +36,15 @@
           <p class="views">{{post.upvotes}}</p>
           <button><i class="fa-solid fa-chevron-down btn"></i></button>
           <p class="views">{{post.downvotes}}</p>
+          <button><i class="fa-solid fa-x x"></i></button>
         </div>
       </div>
-    </div>
   </div>
 </template>
 
 <script>
 //import axios from 'axios';
+import { api } from '../apis/api';
 
 export default {
   name: 'HomePage',
@@ -38,66 +53,14 @@ export default {
   },
   data() {
     return {
-      users: [
-        {
-          userid: "1",
-          firstName: "first1",
-          lastName: "last1",
-          email: "first@gmail.com",
-          posts: [
-            {
-              postid: "11",
-              title: "post1",
-              body: "post1",
-              upvotes: 500,
-              downvotes: 2
-            }
-          ]
-        },
-        {
-          userid: "2",
-          firstName: "first2",
-          lastName: "last2",
-          email: "second@gmail.com",
-          posts: [
-            {
-              postid: "21",
-              title: "post2",
-              body: "post2",
-              upvotes: 10,
-              downvotes: 0
-            },
-            {
-              postid: "22",
-              title: "post22",
-              body: "post22",
-              upvotes: 5,
-              downvotes: 20
-            }
-          ]
-        },
-        {
-          userid: "3",
-          firstName: "first3",
-          lastName: "last3",
-          email: "third@gmail.com",
-          posts: [
-            
-          ]
-        }
-      ]
+      posts: []
     }
   },
   computed: {
-    getPosts: function () {
-      var temp = [];
-      for(var i=0; i<this.users.length; i++) {
-        if(this.users[i].posts.length > 0) {
-          temp.push(this.users[i]);
-        }
-      }
-      return temp;
-    }
+  },
+  async mounted() {
+    this.posts = await api.getPosts();
+    console.log(this.posts)
   }
 }
 </script>
@@ -109,9 +72,6 @@ export default {
   border: solid 1px black;
   width: 900px;
   margin: auto;
-}
-
-.post-card {
   background: #ffffff;
   padding: 10px;
   border-radius: 10px;
@@ -142,4 +102,35 @@ hr {
   font-size: 20px;
 }
 
+.x {
+  color: red;
+}
+
+.video {
+  opacity: 0.8;
+/*   &:hover {
+    opacity: 1.0;
+  } */
+}
+
+/* .video { 
+  position: relative; 
+}
+.video video {
+    position:relative;
+    z-index:0;
+} */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  font-size: 75px;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
 </style>
