@@ -98,6 +98,10 @@ export default {
   margin-right: 100%;
 }
 
+.interact i {
+  padding: 0px 10px 0px 20px;
+}
+
 .btn, .views {
   padding: 5px;
 }
