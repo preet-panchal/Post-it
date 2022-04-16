@@ -26,6 +26,12 @@
                     <span class="option">Create</span>
                 </a>
                 </li>
+                <li :class="{ active: isMyPosts }">
+                <a v-on:click="showCreate" class="option">
+                    <span class="icon"><i class="fa-solid fa-table-cells" aria-hidden="true"></i></span>
+                    <span class="option">My Posts</span>
+                </a>
+                </li>
                 <li :class="{ active: isAnalyticsHidden }">
                 <a v-on:click="showAnalytics" class="option">
                     <span class="icon"><i class="fas fa-chart-line" aria-hidden="true"></i></span>
@@ -38,7 +44,7 @@
         <div v-if="isDashboardHidden" class="content">
             <h1>Dashboard</h1>
             <strong>Your posts show up here.</strong>
-            <div v-for="post in usersPosts" :key="post.postid" class="post-card">
+            <!-- <div v-for="post in usersPosts" :key="post.postid" class="post-card">
                 <div class="title">
                     <p>{{post.title}}</p>
                 </div>
@@ -58,7 +64,35 @@
                     <p class="views">{{post.downvotes}}</p>
                     <button><i class="fa-solid fa-x x"></i></button>
                 </div>
+            </div> -->
+            <div v-for="post in usersPosts" :key="post.postid" class="post-card">
+              <div class="wrapper">
+                <div class="blog_post">
+                  <div class="container_copy">
+                    <h3>post.date • {{post.author}}</h3>
+                    <h1>{{post.title}}</h1>
+                    <p>{{post.body}}</p>
+                  </div>
+                  <div class="interact">
+                    <i class="fa-solid fa-chevron-up vote"></i>
+                    <p class="views">{{post.upvotes}}</p>
+                    <i class="fa-solid fa-chevron-down vote"></i>
+                    <p class="views">{{post.downvotes}}</p>
+                    <i class="fa-solid fa-trash trash"></i>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="wrapper">
+                <div class="blog_post">
+                  <div class="container_copy">
+                    <h3>12 January 2019</h3>
+                    <h1>CSS Positioning</h1>
+                    <p>The position property specifies the type of positioning method used for an element (static, relative, absolute, fixed, or sticky).</p>
+                  </div>
+                </div>
+              </div> -->
             </div>
+
         </div>
         <form v-if="isCreateHidden" class="content">
             <strong>You can create posts here.</strong>
@@ -100,7 +134,7 @@ export default {
                             {
                                 "_id": "6258a6f7303e638a4ec62df9",
                                 "title": "Test1",
-                                "body": "dfsdf",
+                                "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                                 "upvotes": 0,
                                 "downvotes": 0,
                                 "author": "Preet Panchal",
@@ -168,53 +202,100 @@ export default {
 <style lang="scss" scoped>
 
 .profile {
-    margin-bottom: 50px;
+  margin-bottom: 50px;
 }
 
 .dashboard {
-    display: inline-flex;
-    font-size: 20px;
+  display: inline-flex;
+  font-size: 20px;
 }
 
 .option {
-    padding-right: 20px;
-    padding-left: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 
 .content {
-    margin-top: 50px;
+  margin-top: 50px;
 }
 
 .textArea {
-    padding-bottom: 20px;
-    font-size: 25px;
+  padding-bottom: 20px;
+  font-size: 25px;
 }
 
 textarea {
-    width: 800px;
-    height: 300px;
+  width: 800px;
+  height: 300px;
 }
 
 input {
-    width: 400px;
-    height: 30px;
+  width: 400px;
+  height: 30px;
 }
 
 .post-card {
-  border: solid 1px black;
-  width: 900px;
+  // border: solid 1px black;
+  // width: 900px;
   margin: auto;
-  background: #ffffff;
-  padding: 10px;
-  border-radius: 10px;
+  // background: #ffffff;
+  padding: 30px 0px;
+  // border-radius: 10px;
   margin: 20px auto;
-  max-width: 800px;
-  color: #444;
+  margin: auto;
+  // max-width: 800px;
+  max-width: 900px;
+  // color: #444;
 }
+
+// ----- testing new postcard
+
+.wrapper {
+  height: 100%;
+  width: 100%;
+}
+
+.blog_post {
+  position: relative;
+  padding: 3rem 4rem 2rem 4rem;
+  background: rgb(245, 245, 245);
+  width: 900px;
+  border-radius: 10px;
+  // top: 50%;
+  // left: 50%;
+  // transform: translate(-50%, -50%);
+  box-shadow: 1px 1px 2rem rgba(54, 71, 107, 0.5);
+}
+
+.container_copy h3 {
+  margin: 0 0 1.0rem 0;
+  color: rgb(122, 122, 122);
+  font-size: 1.25rem;
+}
+
+.container_copy h1 {
+  margin: 0 0 1rem 0;
+  font-size: 2.5rem;
+  letter-spacing: 0.5px;
+  color: #36476b;
+}
+
+.container_copy p {
+  margin: 0 0 2.5rem 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+
+// ----
 
 .interact {
   display: inline-flex;
   margin-right: 100%;
+}
+
+.interact i {
+  padding: 0px 10px 0px 20px;
 }
 
 .btn, .views {
@@ -239,14 +320,26 @@ hr {
   background-color: #fbd758;
 }
 
-.x {
-  color: red;
-}
-
-.upvote {
+.vote {
   font-size: 30px;
   &:hover {
-    color: green; 
+    color: rgb(0, 115, 255); 
+    cursor: pointer;
+  }
+}
+
+// .downvote {
+//   font-size: 30px;
+//   &:hover {
+//     color: red; 
+//     cursor: pointer;
+//   }
+// }
+
+.trash {
+  font-size: 25px;
+  &:hover {
+    color: red; 
     cursor: pointer;
   }
 }

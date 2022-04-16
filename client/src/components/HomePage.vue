@@ -20,29 +20,30 @@
           
         </div>
     </div>
+
     <div class="header">
       <h1>Trending Posts <i class="fa-solid fa-arrow-trend-up fa-md"></i></h1>    
     </div>
+
     <div v-for="post in posts" :key="post.postid" class="post-card">
-        <div class="title">
-          <p>{{post.title}}</p>
-        </div>
-        <hr>
-        <div class="author">
-          <p>{{post.author}}</p>
-        </div>
-        <hr>
-        <div class="body">
-          <p>{{post.body}}</p>
-        </div>
-        <hr>
-        <div class="interact">
-          <button><i class="fa-solid fa-chevron-up btn"></i></button>
-          <p class="views">{{post.upvotes}}</p>
-          <button><i class="fa-solid fa-chevron-down btn"></i></button>
-          <p class="views">{{post.downvotes}}</p>
+      <div class="wrapper">
+        <div class="blog_post">
+          <div class="container_copy">
+            <h3>post.date • {{post.author}}</h3>
+            <h1>{{post.title}}</h1>
+            <p>{{post.body}}</p>
+          </div>
+          <div class="interact">
+            <i class="fa-solid fa-chevron-up vote"></i>
+            <p class="views">{{post.upvotes}}</p>
+            <i class="fa-solid fa-chevron-down vote"></i>
+            <p class="views">{{post.downvotes}}</p>
+            <i class="fa-solid fa-trash trash"></i>
+          </div>
         </div>
       </div>
+    </div>
+
   </div>
 </template>
 
@@ -91,18 +92,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-
-.post-card {
-  border: solid 1px black;
-  width: 900px;
-  margin: auto;
-  background: #ffffff;
-  padding: 10px;
-  border-radius: 10px;
-  margin: 20px auto;
-  max-width: 800px;
-  color: #444;
-}
 
 .interact {
   display: inline-flex;
@@ -237,4 +226,82 @@ $base: 0.6rem;
     transform: translateY($base * 8) scale(0.5);
   }
 }
+
+.post-card {
+  // border: solid 1px black;
+  // width: 900px;
+  margin: auto;
+  // background: #ffffff;
+  padding: 30px 0px;
+  // border-radius: 10px;
+  margin: 20px auto;
+  margin: auto;
+  // max-width: 800px;
+  max-width: 900px;
+  // color: #444;
+}
+
+// ----- testing new postcard
+
+.wrapper {
+  height: 100%;
+  width: 100%;
+}
+
+.blog_post {
+  position: relative;
+  padding: 3rem 4rem 2rem 4rem;
+  background: rgb(245, 245, 245);
+  width: 900px;
+  border-radius: 10px;
+  // top: 50%;
+  // left: 50%;
+  // transform: translate(-50%, -50%);
+  box-shadow: 1px 1px 2rem rgba(54, 71, 107, 0.5);
+}
+
+.container_copy h3 {
+  margin: 0 0 1.0rem 0;
+  color: rgb(122, 122, 122);
+  font-size: 1.25rem;
+}
+
+.container_copy h1 {
+  margin: 0 0 1rem 0;
+  font-size: 2.5rem;
+  letter-spacing: 0.5px;
+  color: #36476b;
+}
+
+.container_copy p {
+  margin: 0 0 2.5rem 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.vote {
+  font-size: 30px;
+  &:hover {
+    color: rgb(0, 115, 255); 
+    cursor: pointer;
+  }
+}
+
+// .downvote {
+//   font-size: 30px;
+//   &:hover {
+//     color: red; 
+//     cursor: pointer;
+//   }
+// }
+
+.trash {
+  font-size: 25px;
+  &:hover {
+    color: red; 
+    cursor: pointer;
+  }
+}
+
+// ----
 </style>
