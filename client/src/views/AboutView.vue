@@ -107,16 +107,18 @@ export default {
 }
 
 .overlay {
-  animation: fadeInAnimation ease 4.5s;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
+  background: 50% 100% / 50% 50% no-repeat
+              radial-gradient(ellipse at bottom, #fff, transparent, transparent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: reveal 4.0s ease-in-out forwards 0.2s,
+             glow 2.5s linear infinite 2.0s;
 
-  @keyframes fadeInAnimation {
-    0% {
-        opacity: 0;
-    }
+  @keyframes reveal {
     100% {
-        opacity: 1;
+      background-size: 300% 300%;
+      color: #fff;
     }
   }
 }

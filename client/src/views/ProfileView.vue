@@ -52,7 +52,7 @@
                 </div>
                 <hr>
                 <div class="interact">
-                    <button><i class="fa-solid fa-chevron-up btn"></i></button>
+                    <i class="fa-solid fa-chevron-up upvote"></i>
                     <p class="views">{{post.upvotes}}</p>
                     <button><i class="fa-solid fa-chevron-down btn"></i></button>
                     <p class="views">{{post.downvotes}}</p>
@@ -96,7 +96,28 @@ export default {
             isDashboardHidden: true,
             isCreateHidden: false,
             isAnalyticsHidden: false,
-            usersPosts: [],
+            usersPosts: [
+                            {
+                                "_id": "6258a6f7303e638a4ec62df9",
+                                "title": "Test1",
+                                "body": "dfsdf",
+                                "upvotes": 0,
+                                "downvotes": 0,
+                                "author": "Preet Panchal",
+                                "userid": "6257397b5d0e39067499ad30",
+                                "v": 0
+                            },
+                            {
+                                "_id": "62599885fd0c40f912299d70",
+                                "title": "sdf",
+                                "body": "sdf",
+                                "upvotes": 0,
+                                "downvotes": 0,
+                                "author": "Preet Panchal",
+                                "userid": "6257397b5d0e39067499ad30",
+                                "v": 0
+                            }
+                        ],
             title: "",
             body: "",
             user: [],
@@ -221,6 +242,15 @@ hr {
 .x {
   color: red;
 }
+
+.upvote {
+  font-size: 30px;
+  &:hover {
+    color: green; 
+    cursor: pointer;
+  }
+}
+
 
 /* enter transitions */
   .error-enter-from {

@@ -3,14 +3,14 @@
 
     <div class="video is-fullheight">
         <video muted autoplay loop id="background-video">
-<!--          <source src="../assets/forest.mp4" type="video/mp4"> -->
           <source src="../assets/earth.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
-        <div class="overlay">
+        <div class="home-header overlay">
           <div>
             <p>Stay connected to the world.</p>
             <p>Scroll down to see trending posts!</p>
+            <br>
             <div class="container">
               <div class="chevron"></div>
               <div class="chevron"></div>
@@ -47,7 +47,7 @@
 </template>
 
 <script>
-//import axios from 'axios';
+// import axios from 'axios';
 // import { api } from '../apis/api';
 
 export default {
@@ -57,7 +57,28 @@ export default {
   },
   data() {
     return {
-      posts: []
+      posts: [
+                {
+                    "_id": "6258a6f7303e638a4ec62df9",
+                    "title": "Test1",
+                    "body": "dfsdf",
+                    "upvotes": 0,
+                    "downvotes": 0,
+                    "author": "Preet Panchal",
+                    "userid": "6257397b5d0e39067499ad30",
+                    "v": 0
+                },
+                {
+                    "_id": "62599885fd0c40f912299d70",
+                    "title": "sdf",
+                    "body": "sdf",
+                    "upvotes": 0,
+                    "downvotes": 0,
+                    "author": "Preet Panchal",
+                    "userid": "6257397b5d0e39067499ad30",
+                    "v": 0
+                }
+            ]
     }
   },
   computed: {
@@ -116,38 +137,35 @@ hr {
   }
 }
 
-/* .video { 
-  position: relative; 
+.home-header {
+  font-size: 80px;
+  font-weight: bolder;
+  color: #fff;
 }
-.video video {
-    position:relative;
-    z-index:0;
-} */
+
 .overlay {
   position: absolute;
   top: 0;
   left: 0;
   z-index: 1;
-  font-size: 80px;
-  font-weight: bold;
   display: flex;
   height: 100%;
   width: 100%;
   justify-content: center;
   align-items: center;
-  color: #fff;
 
   background: 50% 100% / 50% 50% no-repeat
               radial-gradient(ellipse at bottom, #fff, transparent, transparent);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: reveal 3000ms ease-in-out forwards 200ms,
-             glow 2500ms linear infinite 2000ms;
+  animation: reveal 4.0s ease-in-out forwards 0.2s,
+             glow 2.5s linear infinite 2.0s;
 
   @keyframes reveal {
     100% {
       background-size: 300% 300%;
+      color: #fff;
     }
   }
 }
@@ -166,7 +184,7 @@ $base: 0.6rem;
 
 .chevron {
   position: absolute;
-  width: $base * 3.5;
+  width: $base * 6.5;
   height: $base * 0.8;
   opacity: 0;
   transform: scale(0.3);

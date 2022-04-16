@@ -23,6 +23,10 @@ export default {
 </script>
 
 <style lang="scss">
+* {
+    scroll-behavior: smooth;
+}
+
 #app {
   font-family:'Poppins', 'Open Sans', sans-serif, Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
