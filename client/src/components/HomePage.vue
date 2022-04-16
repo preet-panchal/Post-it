@@ -62,7 +62,7 @@ export default {
                 {
                     "_id": "6258a6f7303e638a4ec62df9",
                     "title": "Test1",
-                    "body": "dfsdf",
+                    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     "upvotes": 0,
                     "downvotes": 0,
                     "author": "Preet Panchal",
@@ -267,12 +267,14 @@ $base: 0.6rem;
 .container_copy h3 {
   margin: 0 0 1.0rem 0;
   color: rgb(122, 122, 122);
+  font-weight: bold;
   font-size: 1.25rem;
 }
 
 .container_copy h1 {
   margin: 0 0 1rem 0;
   font-size: 2.5rem;
+  font-weight: bold;
   letter-spacing: 0.5px;
   color: #36476b;
 }
@@ -291,14 +293,6 @@ $base: 0.6rem;
   }
 }
 
-// .downvote {
-//   font-size: 30px;
-//   &:hover {
-//     color: red; 
-//     cursor: pointer;
-//   }
-// }
-
 .trash {
   font-size: 25px;
   &:hover {
@@ -307,5 +301,4 @@ $base: 0.6rem;
   }
 }
 
-// ----
 </style>

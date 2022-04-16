@@ -328,14 +328,6 @@ hr {
   }
 }
 
-// .downvote {
-//   font-size: 30px;
-//   &:hover {
-//     color: red; 
-//     cursor: pointer;
-//   }
-// }
-
 .trash {
   font-size: 25px;
   &:hover {
