@@ -147,12 +147,12 @@ hr {
   justify-content: center;
   align-items: center;
 
-  background: 50% 100% / 50% 50% no-repeat
+  background: 100% 100% / 50% 50% no-repeat
               radial-gradient(ellipse at bottom, #fff, transparent, transparent);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: reveal 4.0s ease-in-out forwards 0.2s,
+  animation: reveal 5.0s ease-in-out forwards 0.2s,
              glow 2.5s linear infinite 2.0s;
 
   @keyframes reveal {

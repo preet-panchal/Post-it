@@ -6,9 +6,6 @@
         <transition name="success">
             <SuccessPopup v-if="success" msg="Success: Your post went through!"/>
         </transition>
-        <transition name="success">
-            <SuccessPopup v-if="postDeleted" msg="Success: Your post has been deleted!"/>
-        </transition>
         <h1>Log in to see your posts and to create new posts!</h1>
         <div class="dashboard tabs is-toggle is is-centered is-halfwidth is-large">
             <ul>
@@ -42,6 +39,7 @@
         <div v-if="isDashboardShown" class="content">
             <DashboardPage :user="this.user"/>
         </div>
+
         <form v-if="isCreateShown" class="content">
             <h1>Create Post</h1>
             <strong>You can create posts here.</strong>
@@ -55,28 +53,11 @@
             </div>
             <button class="button" @click.prevent="createPost">Post-It!</button>
         </form>
+
         <div v-if="isMyPostsShown" class="content">
-            <h1>My Posts</h1>
-            <strong>Here are your posts.</strong>
-            <div v-for="post in usersPosts" :key="post._id" class="post-card">
-              <div class="wrapper">
-                <div class="blog_post">
-                  <div class="container_copy">
-                    <h3>{{post.datePosted}} • {{post.author}}</h3>
-                    <h1>{{post.title}}</h1>
-                    <p>{{post.body}}</p>
-                  </div>
-                  <div class="interact">
-                    <i class="fa-solid fa-chevron-up vote"></i>
-                    <p class="views">{{post.upvotes}}</p>
-                    <i class="fa-solid fa-chevron-down vote"></i>
-                    <p class="views">{{post.downvotes}}</p>
-                    <i @click.prevent="deletePost(post._id)" class="fa-solid fa-trash trash"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <MyPostsPage/>
         </div>
+
         <div v-if="isAnalyticsShown" class="content">
             <AnalyticsPage :upvotes="0" :downvotes="0"/>
         </div>
@@ -88,6 +69,7 @@ import ErrorPopup from '../components/ErrorPopup.vue'
 import SuccessPopup from '../components/SuccessPopup.vue'
 import AnalyticsPage from '../components/AnalyticsPage.vue'
 import DashboardPage from '../components/DashboardPage.vue'
+import MyPostsPage from '../components/MyPostsPage.vue'
 /* import { api } from '../apis/api'; */
 
 export default {
@@ -96,7 +78,8 @@ export default {
         ErrorPopup,
         SuccessPopup,
         AnalyticsPage,
-        DashboardPage
+        DashboardPage,
+        MyPostsPage
     },
     data() {
         return {
@@ -104,28 +87,6 @@ export default {
             isDashboardShown: true,
             isCreateShown: false,
             isAnalyticsShown: false,
-            usersPosts: [
-                            {
-                                "_id": "6258a6f7303e638a4ec62df9",
-                                "title": "Test1",
-                                "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                                "upvotes": 0,
-                                "downvotes": 0,
-                                "author": "Preet Panchal",
-                                "userid": "6257397b5d0e39067499ad30",
-                                "v": 0
-                            },
-                            {
-                                "_id": "62599885fd0c40f912299d70",
-                                "title": "sdf",
-                                "body": "sdf",
-                                "upvotes": 0,
-                                "downvotes": 0,
-                                "author": "Preet Panchal",
-                                "userid": "6257397b5d0e39067499ad30",
-                                "v": 0
-                            }
-                        ],
             title: "",
             body: "",
             user: [],
@@ -162,24 +123,24 @@ export default {
           this.isMyPostsShown = true;
           /* this.usersPosts = await api.getPostsByUser('6257397b5d0e39067499ad30'); */
         },
-        async createPost() {
+        /* async createPost() {
             var dateObj = new Date();
             var month = dateObj.getUTCMonth() + 1;
             var day = dateObj.getUTCDate();
             var year = dateObj.getUTCFullYear();
             this.datePosted = month + "/" + day + "/" + year;
             console.log(this.datePosted);
-            // var payload = {
-            //   title: this.title, 
-            //   body: this.body, 
-            //   datePosted: this.datePosted,
-            //   upvotes: 0, 
-            //   downvotes: 0, 
-            //   author: this.user[0].firstName + " " + this.user[0].lastName, 
-            //   userid: '6257397b5d0e39067499ad30'
-            // };
+            var payload = {
+              title: this.title, 
+              body: this.body, 
+              datePosted: this.datePosted,
+              upvotes: 0, 
+              downvotes: 0, 
+              author: this.user[0].firstName + " " + this.user[0].lastName, 
+              userid: '6257397b5d0e39067499ad30'
+            };
             try {
-                /* await api.createPost(payload); */
+                await api.createPost(payload);
                 this.title = "";
                 this.body = "";
                 this.success = true;
@@ -189,21 +150,21 @@ export default {
                 this.failure = true;
                 setTimeout(() => this.failure = false, 2000);
             }
-        },
-        // async deletePost(postid) {
-        //     try {
-        //         /* await api.deletePost(postid); */
-        //         this.postDeleted = true;
-        //         setTimeout(() => this.postDeleted = false, 2000);
-        //     } catch (e) {
-        //         console.log(e);
-        //     }
-        //     /* this.usersPosts = await api.getPostsByUser('6257397b5d0e39067499ad30'); */
-        // }
-    },
+        }, */
+        /* async deletePost(postid) {
+          try {
+            await api.deletePost(postid);
+            this.postDeleted = true;
+            setTimeout(() => this.postDeleted = false, 2000);
+          } catch (e) {
+            console.log(e);
+          }
+          this.usersPosts = await api.getPostsByUser('6257397b5d0e39067499ad30');
+        } */
+    }/* ,
     async mounted() {
-        /* this.user = await api.getUserById('6257397b5d0e39067499ad30'); */
-    }
+        this.user = await api.getUserById('6257397b5d0e39067499ad30');
+    } */
 };
 </script>
 
@@ -252,70 +213,6 @@ input {
   height: 30px;
 }
 
-.post-card {
-  // border: solid 1px black;
-  // width: 900px;
-  margin: auto;
-  // background: #ffffff;
-  padding: 30px 0px;
-  // border-radius: 10px;
-  margin: 20px auto;
-  margin: auto;
-  // max-width: 800px;
-  max-width: 900px;
-  // color: #444;
-}
-
-// ----- testing new postcard
-
-.wrapper {
-  height: 100%;
-  width: 100%;
-}
-
-.blog_post {
-  position: relative;
-  padding: 3rem 4rem 2rem 4rem;
-  background: rgb(245, 245, 245);
-  width: 900px;
-  border-radius: 10px;
-  // top: 50%;
-  // left: 50%;
-  // transform: translate(-50%, -50%);
-  box-shadow: 1px 1px 2rem rgba(54, 71, 107, 0.5);
-}
-
-.container_copy h3 {
-  margin: 0 0 1.0rem 0;
-  color: rgb(122, 122, 122);
-  font-size: 1.25rem;
-}
-
-.container_copy h1 {
-  margin: 0 0 1rem 0;
-  font-size: 2.5rem;
-  letter-spacing: 0.5px;
-  color: #36476b;
-}
-
-.container_copy p {
-  margin: 0 0 2.5rem 0;
-  font-size: 1.5rem;
-  color: #333;
-}
-
-
-// ----
-
-.interact {
-  display: inline-flex;
-  margin-right: 100%;
-}
-
-.interact i {
-  padding: 0px 10px 0px 20px;
-}
-
 .btn, .views {
   padding: 0px 5px;
 }
@@ -331,22 +228,6 @@ input {
 
 .active {
   background-color: #fbd758;
-}
-
-.vote {
-  font-size: 30px;
-  &:hover {
-    color: rgb(0, 115, 255); 
-    cursor: pointer;
-  }
-}
-
-.trash {
-  font-size: 25px;
-  &:hover {
-    color: red; 
-    cursor: pointer;
-  }
 }
 
 
