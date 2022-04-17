@@ -13,7 +13,7 @@
     </div>
     </section>
 
-    <section class="columns is-vcentered is-justify-content-space-evenly p-5">
+    <section class="about-content columns is-vcentered is-justify-content-space-evenly p-5">
       <div class="column is-one-third">
         <p class="title is-2 is-spaced">
           Post your story
@@ -112,7 +112,7 @@ export default {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: reveal 4.0s ease-in-out forwards 0.2s,
+  animation: reveal 3.0s ease-in-out forwards 0.2s,
              glow 2.5s linear infinite 2.0s;
 
   @keyframes reveal {
@@ -143,6 +143,17 @@ export default {
   @keyframes textclip {
     to {
       background-position: 200% center;
+    }
+  }
+}
+
+.about-content {
+  transform: scale(0.94);
+  animation: scale 3s forwards cubic-bezier(0.5, 1, 0.89, 1);
+  
+  @keyframes scale {
+    100% {
+      transform: scale(1);
     }
   }
 }

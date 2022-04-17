@@ -221,6 +221,7 @@ export default {
 .option {
   padding-right: 20px;
   padding-left: 20px;
+  color: #36476b;
 }
 
 .content {
