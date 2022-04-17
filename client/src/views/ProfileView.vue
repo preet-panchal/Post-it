@@ -44,7 +44,8 @@
             <strong>Your posts show up here.</strong>
         </div>
         <form v-if="isCreateShown" class="content">
-            <h2>You can create posts here.</h2>
+            <h1>Create Post</h1>
+            <strong>You can create posts here.</strong>
             <div class="title">
                 <p>Post Title:</p>
                 <input id="post-title" v-model="title" placeholder="Title">
@@ -57,7 +58,7 @@
         </form>
         <div v-if="isMyPostsShown" class="content">
             <h1>My Posts</h1>
-            <strong>Here are your posts.</strong>
+            <strong class="sub-h1">Here are your posts.</strong>
             <div v-for="post in usersPosts" :key="post._id" class="post-card">
               <div class="wrapper">
                 <div class="blog_post">
@@ -166,15 +167,15 @@ export default {
             var year = dateObj.getUTCFullYear();
             this.datePosted = month + "/" + day + "/" + year;
             console.log(this.datePosted);
-            var payload = {
-              title: this.title, 
-              body: this.body, 
-              datePosted: this.datePosted,
-              upvotes: 0, 
-              downvotes: 0, 
-              author: this.user[0].firstName + " " + this.user[0].lastName, 
-              userid: '6257397b5d0e39067499ad30'
-            };
+            // var payload = {
+            //   title: this.title, 
+            //   body: this.body, 
+            //   datePosted: this.datePosted,
+            //   upvotes: 0, 
+            //   downvotes: 0, 
+            //   author: this.user[0].firstName + " " + this.user[0].lastName, 
+            //   userid: '6257397b5d0e39067499ad30'
+            // };
             try {
                 /* await api.createPost(payload); */
                 this.title = "";
@@ -187,16 +188,16 @@ export default {
                 setTimeout(() => this.failure = false, 2000);
             }
         },
-        async deletePost(postid) {
-            try {
-                /* await api.deletePost(postid); */
-                this.postDeleted = true;
-                setTimeout(() => this.postDeleted = false, 2000);
-            } catch (e) {
-                console.log(e);
-            }
-            /* this.usersPosts = await api.getPostsByUser('6257397b5d0e39067499ad30'); */
-        }
+        // async deletePost(postid) {
+        //     try {
+        //         /* await api.deletePost(postid); */
+        //         this.postDeleted = true;
+        //         setTimeout(() => this.postDeleted = false, 2000);
+        //     } catch (e) {
+        //         console.log(e);
+        //     }
+        //     /* this.usersPosts = await api.getPostsByUser('6257397b5d0e39067499ad30'); */
+        // }
     },
     async mounted() {
         /* this.usersPosts = await api.getPostsByUser('6257397b5d0e39067499ad30');
@@ -224,6 +225,15 @@ export default {
 
 .content {
   margin-top: 50px;
+}
+
+.content h1 {
+  padding-left: 17px;
+}
+
+.sub-h1 {
+  color: yellow;
+  padding-bottom: 100px;
 }
 
 .textArea {
