@@ -12,25 +12,25 @@
         <h1>Log in to see your posts and to create new posts!</h1>
         <div class="dashboard tabs is-toggle is is-centered is-halfwidth is-large">
             <ul>
-                <li :class="{ active: isDashboardHidden }">
+                <li :class="{ active: isDashboardShown }">
                 <a v-on:click="showDashboard" class="option">
                     <span class="icon"><i class="fas fa-user" aria-hidden="true"></i></span>
                     <span class="option">Dashboard</span>
                 </a>
                 </li>
-                <li :class="{ active: isCreateHidden }">
+                <li :class="{ active: isCreateShown }">
                 <a v-on:click="showCreate" class="option">
                     <span class="icon"><i class="fas fa-pen-to-square" aria-hidden="true"></i></span>
                     <span class="option">Create</span>
                 </a>
                 </li>
-                <li :class="{ active: isMyPosts }">
-                <a v-on:click="showCreate" class="option">
+                <li :class="{ active: isMyPostsShown }">
+                <a v-on:click="showMyPosts" class="option">
                     <span class="icon"><i class="fa-solid fa-table-cells" aria-hidden="true"></i></span>
                     <span class="option">My Posts</span>
                 </a>
                 </li>
-                <li :class="{ active: isAnalyticsHidden }">
+                <li :class="{ active: isAnalyticsShown }">
                 <a v-on:click="showAnalytics" class="option">
                     <span class="icon"><i class="fas fa-chart-line" aria-hidden="true"></i></span>
                     <span class="option">Analytics</span>
@@ -39,61 +39,12 @@
             </ul>
         </div>
   
-        <div v-if="isDashboardHidden" class="content">
-            <h1>Dashboard</h1>
+        <div v-if="isDashboardShown" class="content">
+            <h1>Your Bio</h1>
             <strong>Your posts show up here.</strong>
-            <!-- <div v-for="post in usersPosts" :key="post.postid" class="post-card">
-                <div class="title">
-                    <p>{{post.title}}</p>
-                </div>
-                <hr>
-                <div class="author">
-                    <p>{{post.author}}</p>
-                </div>
-                <hr>
-                <div class="body">
-                    <p>{{post.body}}</p>
-                </div>
-                <hr>
-                <div class="interact">
-                    <i class="fa-solid fa-chevron-up upvote"></i>
-                    <p class="views">{{post.upvotes}}</p>
-                    <button><i class="fa-solid fa-chevron-down btn"></i></button>
-                    <p class="views">{{post.downvotes}}</p>
-                    <button @click.prevent="deletePost(post._id)"><i class="fa-solid fa-x x"></i></button>
-                </div>
-            </div> -->
-            <div v-for="post in usersPosts" :key="post._id" class="post-card">
-              <div class="wrapper">
-                <div class="blog_post">
-                  <div class="container_copy">
-                    <h3>post.date • {{post.author}}</h3>
-                    <h1>{{post.title}}</h1>
-                    <p>{{post.body}}</p>
-                  </div>
-                  <div class="interact">
-                    <i class="fa-solid fa-chevron-up vote"></i>
-                    <p class="views">{{post.upvotes}}</p>
-                    <i class="fa-solid fa-chevron-down vote"></i>
-                    <p class="views">{{post.downvotes}}</p>
-                    <i class="fa-solid fa-trash trash"></i>
-                  </div>
-                </div>
-              </div>
-              <!-- <div class="wrapper">
-                <div class="blog_post">
-                  <div class="container_copy">
-                    <h3>12 January 2019</h3>
-                    <h1>CSS Positioning</h1>
-                    <p>The position property specifies the type of positioning method used for an element (static, relative, absolute, fixed, or sticky).</p>
-                  </div>
-                </div>
-              </div> -->
-            </div>
-
         </div>
-        <form v-if="isCreateHidden" class="content">
-            <strong>You can create posts here.</strong>
+        <form v-if="isCreateShown" class="content">
+            <h2>You can create posts here.</h2>
             <div class="title">
                 <p>Post Title:</p>
                 <input id="post-title" v-model="title" placeholder="Title">
@@ -104,7 +55,29 @@
             </div>
             <button class="button" @click.prevent="createPost">Post-It!</button>
         </form>
-        <div v-if="isAnalyticsHidden" class="content">
+        <div v-if="isMyPostsShown" class="content">
+            <h1>My Posts</h1>
+            <strong>Here are your posts.</strong>
+            <div v-for="post in usersPosts" :key="post._id" class="post-card">
+              <div class="wrapper">
+                <div class="blog_post">
+                  <div class="container_copy">
+                    <h3>{{post.datePosted}} • {{post.author}}</h3>
+                    <h1>{{post.title}}</h1>
+                    <p>{{post.body}}</p>
+                  </div>
+                  <div class="interact">
+                    <i class="fa-solid fa-chevron-up vote"></i>
+                    <p class="views">{{post.upvotes}}</p>
+                    <i class="fa-solid fa-chevron-down vote"></i>
+                    <p class="views">{{post.downvotes}}</p>
+                    <i @click.prevent="deletePost(post._id)" class="fa-solid fa-trash trash"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div v-if="isAnalyticsShown" class="content">
             <h1>Anayltics</h1>
             <strong>Here are your analytics.</strong>
         </div>
@@ -114,7 +87,7 @@
 <script>
 import ErrorPopup from '../components/ErrorPopup.vue'
 import SuccessPopup from '../components/SuccessPopup.vue'
-import { api } from '../apis/api';
+/* import { api } from '../apis/api'; */
 
 export default {
     name: "ProfileView",
@@ -124,10 +97,10 @@ export default {
     },
     data() {
         return {
-            isHidden: false,
-            isDashboardHidden: true,
-            isCreateHidden: false,
-            isAnalyticsHidden: false,
+            isMyPostsShown: false,
+            isDashboardShown: true,
+            isCreateShown: false,
+            isAnalyticsShown: false,
             usersPosts: [
                             {
                                 "_id": "6258a6f7303e638a4ec62df9",
@@ -153,39 +126,57 @@ export default {
             title: "",
             body: "",
             user: [],
+            datePosted: "",
             success: false,
             failure: false,
             postDeleted: false
         }
     },
     methods: {
-        async showDashboard() {
-            this.isDashboardHidden = true;
-            this.isCreateHidden = false;
-            this.isAnalyticsHidden = false;
-            this.usersPosts = await api.getPostsByUser('6257397b5d0e39067499ad30');
+        showDashboard() {
+            /* let date = new Date().toLocaleString(); */
+            this.isDashboardShown = true;
+            this.isCreateShown = false;
+            this.isAnalyticsShown = false;
+            this.isMyPostsShown = false;
         },
         showCreate() {
-            this.isDashboardHidden = false;
-            this.isCreateHidden = true;
-            this.isAnalyticsHidden = false;
+            this.isDashboardShown = false;
+            this.isCreateShown = true;
+            this.isAnalyticsShown = false;
+            this.isMyPostsShown = false;
         },
         showAnalytics() {
-            this.isDashboardHidden = false;
-            this.isCreateHidden = false
-            this.isAnalyticsHidden = true;
+            this.isDashboardShown = false;
+            this.isCreateShown = false
+            this.isAnalyticsShown = true;
+            this.isMyPostsShown = false;
+        },
+        async showMyPosts() {
+          this.isDashboardShown = false;
+          this.isCreateShown = false
+          this.isAnalyticsShown = false;
+          this.isMyPostsShown = true;
+          /* this.usersPosts = await api.getPostsByUser('6257397b5d0e39067499ad30'); */
         },
         async createPost() {
+            var dateObj = new Date();
+            var month = dateObj.getUTCMonth() + 1;
+            var day = dateObj.getUTCDate();
+            var year = dateObj.getUTCFullYear();
+            this.datePosted = month + "/" + day + "/" + year;
+            console.log(this.datePosted);
             var payload = {
               title: this.title, 
               body: this.body, 
+              datePosted: this.datePosted,
               upvotes: 0, 
               downvotes: 0, 
               author: this.user[0].firstName + " " + this.user[0].lastName, 
               userid: '6257397b5d0e39067499ad30'
             };
             try {
-                await api.createPost(payload);
+                /* await api.createPost(payload); */
                 this.title = "";
                 this.body = "";
                 this.success = true;
@@ -198,18 +189,18 @@ export default {
         },
         async deletePost(postid) {
             try {
-                await api.deletePost(postid);
+                /* await api.deletePost(postid); */
                 this.postDeleted = true;
                 setTimeout(() => this.postDeleted = false, 2000);
             } catch (e) {
                 console.log(e);
             }
-            this.usersPosts = await api.getPostsByUser('6257397b5d0e39067499ad30');
+            /* this.usersPosts = await api.getPostsByUser('6257397b5d0e39067499ad30'); */
         }
     },
     async mounted() {
-        this.usersPosts = await api.getPostsByUser('6257397b5d0e39067499ad30');
-        this.user = await api.getUserById('6257397b5d0e39067499ad30');
+        /* this.usersPosts = await api.getPostsByUser('6257397b5d0e39067499ad30');
+        this.user = await api.getUserById('6257397b5d0e39067499ad30'); */
     }
 };
 </script>
@@ -316,11 +307,6 @@ input {
 
 .btn, .views {
   padding: 0px 5px;
-}
-
-hr {
-  height: 3px;
-  background-color: #ccc;
 }
 
 .title {
