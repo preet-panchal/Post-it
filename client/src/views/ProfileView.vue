@@ -176,7 +176,14 @@ export default {
             this.isAnalyticsHidden = true;
         },
         async createPost() {
-            var payload = {title: this.title, body: this.body, upvotes: 0, downvotes: 0, author: this.user[0].firstName + " " + this.user[0].lastName, userid: '6257397b5d0e39067499ad30'};
+            var payload = {
+              title: this.title, 
+              body: this.body, 
+              upvotes: 0, 
+              downvotes: 0, 
+              author: this.user[0].firstName + " " + this.user[0].lastName, 
+              userid: '6257397b5d0e39067499ad30'
+            };
             try {
                 await api.createPost(payload);
                 this.title = "";
