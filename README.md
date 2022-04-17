@@ -9,7 +9,7 @@ CSCI3230U Final Project - Group 19
       
     - Kaathihan Luxmachandran ([Kaathihan](https://github.com/Kaathihan))
     
-    - Fahad Bhatti 
+    - Fahad Bhatti ([FahadBhatti](https://github.com/FahadBhatti424))
 
     - 
 
