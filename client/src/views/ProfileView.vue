@@ -79,8 +79,7 @@
             </div>
         </div>
         <div v-if="isAnalyticsShown" class="content">
-            <h1>Anayltics</h1>
-            <strong>Here are your analytics.</strong>
+            <AnalyticsPage :upvotes="0" :downvotes="0"/>
         </div>
     </div>
 </template>
@@ -88,13 +87,15 @@
 <script>
 import ErrorPopup from '../components/ErrorPopup.vue'
 import SuccessPopup from '../components/SuccessPopup.vue'
+import AnalyticsPage from '../components/AnalyticsPage.vue'
 /* import { api } from '../apis/api'; */
 
 export default {
     name: "ProfileView",
     components: {
         ErrorPopup,
-        SuccessPopup
+        SuccessPopup,
+        AnalyticsPage
     },
     data() {
         return {
