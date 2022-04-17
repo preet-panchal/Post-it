@@ -29,7 +29,7 @@
       <div class="wrapper">
         <div class="blog_post">
           <div class="container_copy">
-            <h3>post.date • {{post.author}}</h3>
+            <h3>{{post.datePosted}} • {{post.author}}</h3>
             <h1>{{post.title}}</h1>
             <p>{{post.body}}</p>
           </div>
@@ -49,7 +49,7 @@
 
 <script>
 // import axios from 'axios';
-// import { api } from '../apis/api';
+/* import { api } from '../apis/api'; */
 
 export default {
   name: 'HomePage',
@@ -84,9 +84,9 @@ export default {
   },
   computed: {
   },
-  // async mounted() {
-  //   this.posts = await api.getPosts();
-  // }
+  async mounted() {
+    /* this.posts = await api.getPosts(); */
+  }
 }
 </script>
 
