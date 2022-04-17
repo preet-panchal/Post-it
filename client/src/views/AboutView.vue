@@ -15,10 +15,10 @@
 
     <section class="about-content columns is-vcentered is-justify-content-space-evenly p-5">
       <div class="column is-one-third">
-        <p class="title is-2 is-spaced">
+        <p class="reveal-content title is-2 is-spaced">
           Post your story
         </p>
-        <p class="subtitle is-6">
+        <p class="reveal-content subtitle is-6">
           The Post-It platform is a place to allow complete freedom of speech and to speak whatever is on your mind. We want to read your stories. 
         </p>
       </div>
@@ -32,10 +32,10 @@
         <img src="../assets/positivity.jpeg" alt="Banner">
       </div>
       <div class="column is-one-third">
-        <p class="title is-2 is-spaced">
+        <p class="reveal-content title is-2 is-spaced">
           Good vibes only 
         </p>
-        <p class="subtitle is-6">
+        <p class="reveal-content subtitle is-6">
           Post-It is all about thinking positive, staying positive, and spreading positivity. An example of good vibes is a happy person smiling and having a positive effect on those around them.
         </p>
       </div>
@@ -43,10 +43,10 @@
 
     <section class="columns is-vcentered is-justify-content-space-evenly p-5">
       <div class="column is-one-third">
-        <p class="title is-2 is-spaced">
+        <p class="reveal-content title is-2 is-spaced">
           Know your audience
         </p>
-        <p class="subtitle is-6">
+        <p class="reveal-content subtitle is-6">
           Find out which posts are a hit with Post-It’s built-in analytics. You will get to see what your audience most interested in.
         </p>
       </div>
@@ -60,10 +60,10 @@
         <img src="../assets/memories.jpeg" alt="Banner">
       </div>
       <div class="column is-one-third">
-        <p class="title is-2 is-spaced">
+        <p class="reveal-content title is-2 is-spaced">
           Save your memories
         </p>
-        <p class="subtitle is-6">
+        <p class="reveal-content subtitle is-6">
           Save the moments that matter. Post-It allows you to safely store thousands of posts, photos, and more for free. So, what's the hold up?
         </p>
         <button class="button is-link is-medium" @click="redirectToRegister">Start Posting Now</button>
@@ -165,15 +165,16 @@ window.addEventListener("scroll", reveal);
   }
 }
 
-.about-content {
-  transform: scale(0.94);
-  animation: scale 3s forwards cubic-bezier(0.5, 1, 0.89, 1);
-  
-  @keyframes scale {
-    100% {
-      transform: scale(1);
-    }
-  }
+.reveal-content {
+  position: relative;
+  transform: translateY(150px);
+  opacity: 0;
+  transition: 1s all ease;
+}
+
+.reveal-content.active {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .column img {
