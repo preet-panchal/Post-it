@@ -6,12 +6,10 @@
         <transition name="success">
             <SuccessPopup v-if="success" msg="Success: Your post went through!"/>
         </transition>
+        <transition name="success">
+            <SuccessPopup v-if="postDeleted" msg="Success: Your post has been deleted!"/>
+        </transition>
         <h1>Log in to see your posts and to create new posts!</h1>
-        <!-- <div class="dashboard">
-            <h3 v-on:click="showDashboard" :class="{ active: isDashboardHidden }" class="option">Dashboard</h3> |
-            <h3 v-on:click="showCreate" :class="{ active: isCreateHidden }" class="option">Create</h3> |
-            <h3 v-on:click="showAnalytics" :class="{ active: isAnalyticsHidden }" class="option">Analytics</h3>
-        </div> -->
         <div class="dashboard tabs is-toggle is is-centered is-halfwidth is-large">
             <ul>
                 <li :class="{ active: isDashboardHidden }">
@@ -62,10 +60,10 @@
                     <p class="views">{{post.upvotes}}</p>
                     <button><i class="fa-solid fa-chevron-down btn"></i></button>
                     <p class="views">{{post.downvotes}}</p>
-                    <button><i class="fa-solid fa-x x"></i></button>
+                    <button @click.prevent="deletePost(post._id)"><i class="fa-solid fa-x x"></i></button>
                 </div>
             </div> -->
-            <div v-for="post in usersPosts" :key="post.postid" class="post-card">
+            <div v-for="post in usersPosts" :key="post._id" class="post-card">
               <div class="wrapper">
                 <div class="blog_post">
                   <div class="container_copy">
@@ -116,7 +114,7 @@
 <script>
 import ErrorPopup from '../components/ErrorPopup.vue'
 import SuccessPopup from '../components/SuccessPopup.vue'
-// import { api } from '../apis/api';
+import { api } from '../apis/api';
 
 export default {
     name: "ProfileView",
@@ -156,7 +154,8 @@ export default {
             body: "",
             user: [],
             success: false,
-            failure: false
+            failure: false,
+            postDeleted: false
         }
     },
     methods: {
@@ -164,7 +163,7 @@ export default {
             this.isDashboardHidden = true;
             this.isCreateHidden = false;
             this.isAnalyticsHidden = false;
-            // this.usersPosts = await api.getPostsByUser('6257397b5d0e39067499ad30');
+            this.usersPosts = await api.getPostsByUser('6257397b5d0e39067499ad30');
         },
         showCreate() {
             this.isDashboardHidden = false;
@@ -176,7 +175,7 @@ export default {
             this.isCreateHidden = false
             this.isAnalyticsHidden = true;
         },
-        /*async createPost() {
+        async createPost() {
             var payload = {title: this.title, body: this.body, upvotes: 0, downvotes: 0, author: this.user[0].firstName + " " + this.user[0].lastName, userid: '6257397b5d0e39067499ad30'};
             try {
                 await api.createPost(payload);
@@ -189,12 +188,22 @@ export default {
                 this.failure = true;
                 setTimeout(() => this.failure = false, 2000);
             }
-        }*/
+        },
+        async deletePost(postid) {
+            try {
+                await api.deletePost(postid);
+                this.postDeleted = true;
+                setTimeout(() => this.postDeleted = false, 2000);
+            } catch (e) {
+                console.log(e);
+            }
+            this.usersPosts = await api.getPostsByUser('6257397b5d0e39067499ad30');
+        }
     },
-    /*async mounted() {
+    async mounted() {
         this.usersPosts = await api.getPostsByUser('6257397b5d0e39067499ad30');
         this.user = await api.getUserById('6257397b5d0e39067499ad30');
-    }*/
+    }
 };
 </script>
 
