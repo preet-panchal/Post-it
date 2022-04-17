@@ -231,6 +231,9 @@ export default {
   padding-left: 17px;
 }
 
+.textArea, .button {
+  font-weight: bold;
+}
 
 .textArea {
   padding-bottom: 20px;
