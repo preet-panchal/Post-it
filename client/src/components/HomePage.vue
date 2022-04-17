@@ -25,7 +25,7 @@
       <h1>Trending Posts <i class="fa-solid fa-arrow-trend-up fa-md"></i></h1>    
     </div>
 
-    <div v-for="post in posts" :key="post.postid" class="post-card">
+    <div v-for="post in posts" :key="post._id" class="post-card">
       <div class="wrapper">
         <div class="blog_post">
           <div class="container_copy">
