@@ -58,7 +58,7 @@
         </form>
         <div v-if="isMyPostsShown" class="content">
             <h1>My Posts</h1>
-            <strong class="sub-h1">Here are your posts.</strong>
+            <strong>Here are your posts.</strong>
             <div v-for="post in usersPosts" :key="post._id" class="post-card">
               <div class="wrapper">
                 <div class="blog_post">
@@ -231,10 +231,6 @@ export default {
   padding-left: 17px;
 }
 
-.sub-h1 {
-  color: yellow;
-  padding-bottom: 100px;
-}
 
 .textArea {
   padding-bottom: 20px;
