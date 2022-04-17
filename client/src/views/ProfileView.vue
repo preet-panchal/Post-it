@@ -40,8 +40,7 @@
         </div>
   
         <div v-if="isDashboardShown" class="content">
-            <h1>Your Bio</h1>
-            <strong>Your posts show up here.</strong>
+            <DashboardPage :user="this.user"/>
         </div>
         <form v-if="isCreateShown" class="content">
             <h1>Create Post</h1>
@@ -88,6 +87,7 @@
 import ErrorPopup from '../components/ErrorPopup.vue'
 import SuccessPopup from '../components/SuccessPopup.vue'
 import AnalyticsPage from '../components/AnalyticsPage.vue'
+import DashboardPage from '../components/DashboardPage.vue'
 /* import { api } from '../apis/api'; */
 
 export default {
@@ -95,7 +95,8 @@ export default {
     components: {
         ErrorPopup,
         SuccessPopup,
-        AnalyticsPage
+        AnalyticsPage,
+        DashboardPage
     },
     data() {
         return {
@@ -201,8 +202,7 @@ export default {
         // }
     },
     async mounted() {
-        /* this.usersPosts = await api.getPostsByUser('6257397b5d0e39067499ad30');
-        this.user = await api.getUserById('6257397b5d0e39067499ad30'); */
+        /* this.user = await api.getUserById('6257397b5d0e39067499ad30'); */
     }
 };
 </script>
