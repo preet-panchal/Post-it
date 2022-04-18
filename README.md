@@ -11,7 +11,7 @@ CSCI3230U Final Project - Group 19
     
     - Fahad Bhatti ([FahadBhatti](https://github.com/FahadBhatti424))
 
-    - 
+    - Sukhpreet Bansal ([Sukphreet-7](https://github.com/Sukhpreet-7))
 
 
 # How to run
