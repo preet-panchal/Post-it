@@ -76,7 +76,6 @@ export default {
         /* background-color: #ffffff;
         color: #36476b; */
         background-position: right center;
-        color: #ffffff;
     }
 }
 

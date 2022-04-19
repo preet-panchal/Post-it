@@ -80,7 +80,6 @@ export default {
     background-image: linear-gradient(to right, #fbd758 0%, #36476b 100%, #fbd758 0%);
     &:hover {
         background-position: right center;
-        color: #ffffff;
     }
 }
 
