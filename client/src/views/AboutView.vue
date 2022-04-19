@@ -66,7 +66,7 @@
         <p class="reveal-content subtitle is-6">
           Save the moments that matter. Post-It allows you to safely store thousands of posts, photos, and more for free. So, what's the hold up?
         </p>
-        <button class="button is-link is-medium" @click="redirectToRegister">Start Posting Now</button>
+        <button class="reveal-content button is-link is-medium" @click="redirectToRegister">Start Posting Now</button>
       </div>
     </section>
   </div>
@@ -185,11 +185,12 @@ window.addEventListener("scroll", reveal);
 }
 
 .button {
-    background-color: #fbd758;
-    color: #36476b;
-    &:hover {
-        background-color: #36476b;
-        color: #fbd758;
-    }
+  font-weight: bold;
+  background-color: #fbd758;
+  color: #36476b;
+  &:hover {
+      background-color: #36476b;
+      color: #fbd758;
+  }
 }
 </style>
