@@ -4,14 +4,18 @@
         <div v-for="post in user" :key="post._id" class="post-card">
           <div class="wrapper">
               <div class="blog_post">
+                <figure class="image is-128x128">
+                  <img class="is-rounded" src="../assets/user-image.png">
+                </figure>
                 <div class="user-info">
                   <h2>Full Name</h2>
-                  <h3>{{post.firstName}}</h3>
+                  <h3>{{post.firstName}} {{post.lastName}}</h3>
                   <h2>Email</h2>
+                  <h3>{{post.email}}</h3>
                   <h2>Username</h2>
+                  <h3>username</h3>
                   <h2>Birthday</h2>
-                  
-                  <p>{{post.lastName}}</p>
+                  <h3>birthday</h3>
                 </div>
               </div>
           </div>
@@ -32,33 +36,16 @@ export default {
 <style scoped lang="scss">
 
 .post-card {
-  // border: solid 1px black;
-  // width: 900px;
   margin: auto;
-  // background: #ffffff;
   padding: 30px 0px;
-  // border-radius: 10px;
   margin: 20px auto;
-  margin: auto;
-  // max-width: 800px;
   max-width: 900px;
-  // color: #444;
 }
 
 .blog-post {
-  position: relative;
   padding: 3rem 4rem 2rem 4rem;
   background: rgb(245, 245, 245);
   width: 900px;
-  border-radius: 10px;
-  text-align: center;
-  align-content: center;
-  align-items: center;
-  justify-content: center;
-  // top: 50%;
-  // left: 50%;
-  // transform: translate(-50%, -50%);
-  box-shadow: 1px 1px 2rem rgba(54, 71, 107, 0.5);
 }
 
 .wrapper {
@@ -71,17 +58,22 @@ export default {
   }
 }
 
+.user-info {
+  margin: auto; 
+  width: 40%; 
+}
+
 h2 {
   color: #777; 
   text-transform: uppercase;
-  font-size: 8px;
+  font-size: 14px;
   letter-spacing: 1px;
 }
 
 h3 {
-  text-align: center;
   border: 0; 
   border-bottom: 1px solid #fbd758;
+  padding-bottom: 10px;
 }
 
 </style>
