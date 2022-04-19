@@ -1,7 +1,7 @@
 <template>
   <div class="form-wrap">
     <transition name="error">
-      <ErrorPopup v-if="failure" msg="Error: FirstName and LastName must be alphabets, Password must be minimum 8 characters and Email must be valid!"/>
+      <ErrorPopup v-if="failure" :msg="errorMsg"/>
     </transition>
     <transition name="success">
       <SuccessPopup v-if="success" msg="Success: Your account is registered!"/>
@@ -55,6 +55,8 @@ export default {
       password: "",
       success: false,
       failure: false,
+      error: null,
+      errorMsg: "",
       users: []
     };
   },
@@ -70,9 +72,10 @@ export default {
         this.success = true;
         setTimeout(() => this.success = false, 2000);
       } catch (e) {
-        console.log(e);
+        console.log(e.response.data);
+        this.errorMsg = 'ERROR: ' + e.response.data.error + '!';
         this.failure = true;
-        setTimeout(() => this.failure = false, 10000);
+        setTimeout(() => this.failure = false, 2000);
       }
     }
   },
