@@ -1,6 +1,7 @@
 const asyncHandler = require('express-async-handler');
 
 const Users = require('../model/users.js');
+const bcrypt = require("bcryptjs");
 
 // @desc    Get users
 // @route   GET /users
@@ -20,19 +21,29 @@ const getUserById = asyncHandler(async (req, res) => {
 // @access  Private
 const createUser = asyncHandler(async (req, res) => {
 
-  const user = await Users.create({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    password: req.body.password,
-    posts: [
-/*         {
-            postid: ObjectId,
-        } */
-    ]
-  });
-
-  res.status(200).json(user);
+  if (!req.body.firstName || !req.body.firstName.match(/^[A-z]+$/)) {
+    res.status(401).json({ error: "Invalid First Name" });
+  } else if (!req.body.lastName || !req.body.lastName.match(/^[A-z]+$/)) {
+    res.status(401).json({ error: "Invalid Last Name" });
+  } else if (!req.body.email || !req.body.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
+    res.status(401).json({ error: "Invalid email" });
+  } else if (!req.body.password || req.body.password.length < 8) {
+    res.status(401).json({ error: "Invalid password" });
+  } else {
+    const user = await Users.create({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      password: req.body.password,
+      posts: [
+  /*         {
+              postid: ObjectId,
+          } */
+      ]
+    });
+  
+    res.status(200).json(user);
+  }
 })
 
 // @desc    Update goal
@@ -68,74 +79,48 @@ const updateUser = asyncHandler(async (req, res) => {
 // @desc    Delete goal
 // @route   DELETE /api/goals/:id
 // @access  Private
-const deletePost = asyncHandler(async (req, res) => {
-  const post = await User.findById(req.params.id)
 
-  if (!post) {
-    res.status(400)
-    throw new Error('Goal not found')
+const loginUser = asyncHandler(async (req, res) => {
+  const user = await Users.findOne({ email: req.body.email });
+  if (user) {
+    // check user password with hashed password stored in the database
+    const validPassword = await bcrypt.compare(req.body.password, user.password);
+    if (validPassword) {
+      res.status(200).json(user);
+    } else {
+      res.status(400).json({ error: "Invalid Password" });
+    }
+  } else {
+    res.status(401).json({ error: "User does not exist" });
   }
+});
 
-  // Check for user
-  if (!req.user) {
-    res.status(401)
-    throw new Error('User not found')
-  }
 
-  // Make sure the logged in user matches the goal user
-  if (post.user.toString() !== req.user.id) {
-    res.status(401)
-    throw new Error('User not authorized')
-  }
-
-  await post.remove()
-
-  res.status(200).json({ id: req.params.id })
-})
+/* function (username, password, callback) {
+  console.log(password.body)
+  Users.findOne({username: username}).exec(function(error, user) {
+    if (error) {
+      callback({error: true})
+    } else if (!user) {
+      callback({error: true})
+    } else {
+      user.comparePassword(password, function(matchError, isMatch) {
+        if (matchError) {
+          callback({error: true})
+        } else if (!isMatch) {
+          callback({error: true})
+        } else {
+          callback({success: true})
+        }
+      })
+    }
+  });
+}; */
 
 module.exports = {
   getUsers,
   getUserById,
   createUser,
   updateUser,
-  deletePost,
+  loginUser
 }
-
-
-/*
-exports.createUser = (req, res) => {
-  const newUser = new User(req.body);
-  newUser.save((err, user) => {
-    if (err) res.send(err);
-    res.json(user);
-  });
-};
-
-exports.read_a_task = (req, res) => {
-  task.findById(req.params.taskId, (err, task) => {
-    if (err) res.send(err);
-    res.json(task);
-  });
-};
-
-exports.addPost = (req, res) => {
-  task.findOneAndUpdate(
-    { _id: req.params.taskId },
-    req.body,
-    { new: true },
-    (err, task) => {
-      if (err) res.send(err);
-      res.json(task);
-    }
-  );
-};
-
-exports.deletePost = (req, res) => {
-  User.deleteOne({ _id: req.params.taskId }, err => {
-    if (err) res.send(err);
-    res.json({
-      message: 'task successfully deleted',
-     _id: req.params.postid
-    });
-  });
-}; */
