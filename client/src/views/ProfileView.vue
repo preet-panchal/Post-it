@@ -37,7 +37,7 @@
         </div>
   
         <div v-if="isDashboardShown" class="content">
-            <DashboardPage :user="this.user"/>
+            <DashboardPage :user="user"/>
         </div>
 
         <form v-if="isCreateShown" class="content">
@@ -70,7 +70,7 @@ import SuccessPopup from '../components/SuccessPopup.vue'
 import AnalyticsPage from '../components/AnalyticsPage.vue'
 import DashboardPage from '../components/DashboardPage.vue'
 import MyPostsPage from '../components/MyPostsPage.vue'
-/* import { api } from '../apis/api'; */
+import { api } from '../apis/api';
 
 export default {
     name: "ProfileView",
@@ -121,9 +121,9 @@ export default {
           this.isCreateShown = false
           this.isAnalyticsShown = false;
           this.isMyPostsShown = true;
-          /* this.usersPosts = await api.getPostsByUser('6257397b5d0e39067499ad30'); */
+          this.usersPosts = await api.getPostsByUser('6257397b5d0e39067499ad30');
         },
-        /* async createPost() {
+        async createPost() {
             var dateObj = new Date();
             var month = dateObj.getUTCMonth() + 1;
             var day = dateObj.getUTCDate();
@@ -150,8 +150,8 @@ export default {
                 this.failure = true;
                 setTimeout(() => this.failure = false, 2000);
             }
-        }, */
-        /* async deletePost(postid) {
+        },
+        async deletePost(postid) {
           try {
             await api.deletePost(postid);
             this.postDeleted = true;
@@ -160,11 +160,11 @@ export default {
             console.log(e);
           }
           this.usersPosts = await api.getPostsByUser('6257397b5d0e39067499ad30');
-        } */
-    }/* ,
+        }
+    },
     async mounted() {
         this.user = await api.getUserById('6257397b5d0e39067499ad30');
-    } */
+    }
 };
 </script>
 
