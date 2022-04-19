@@ -121,7 +121,7 @@ export default {
           this.isCreateShown = false
           this.isAnalyticsShown = false;
           this.isMyPostsShown = true;
-          this.usersPosts = await api.getPostsByUser('6257397b5d0e39067499ad30');
+          this.usersPosts = await api.getPostsByUser('625ee1fba09885857b2f8517');
         },
         async createPost() {
             var dateObj = new Date();
@@ -137,7 +137,7 @@ export default {
               upvotes: 0, 
               downvotes: 0, 
               author: this.user[0].firstName + " " + this.user[0].lastName, 
-              userid: '6257397b5d0e39067499ad30'
+              userid: '625ee1fba09885857b2f8517'
             };
             try {
                 await api.createPost(payload);
@@ -159,11 +159,11 @@ export default {
           } catch (e) {
             console.log(e);
           }
-          this.usersPosts = await api.getPostsByUser('6257397b5d0e39067499ad30');
+          this.usersPosts = await api.getPostsByUser('625ee1fba09885857b2f8517');
         }
     },
     async mounted() {
-        this.user = await api.getUserById('6257397b5d0e39067499ad30');
+        this.user = await api.getUserById('625ee1fba09885857b2f8517');
     }
 };
 </script>

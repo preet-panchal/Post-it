@@ -75,11 +75,11 @@ export default {
           } catch (e) {
             console.log(e);
           }
-          this.usersPosts = await api.getPostsByUser('6257397b5d0e39067499ad30');
+          this.usersPosts = await api.getPostsByUser('625ee1fba09885857b2f8517');
         }
     },
     async mounted() {
-        this.usersPosts = await api.getPostsByUser('6257397b5d0e39067499ad30');
+        this.usersPosts = await api.getPostsByUser('625ee1fba09885857b2f8517');
     }
 }
 </script>
