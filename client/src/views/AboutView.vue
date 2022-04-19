@@ -102,6 +102,15 @@ window.addEventListener("scroll", reveal);
 </script>
 
 <style lang="scss" scoped>
+.button {
+    transition: 0.5s;
+    background-size: 200% auto;
+    background-image: linear-gradient(to right, #fbd758 0%, #36476b 100%, #fbd758 0%);
+    &:hover {
+        background-position: right center;
+        color: #ffffff;
+    }
+}
 .hero {
   background-image: url("../assets/about-cover.jpeg");
   background-size: cover; 
