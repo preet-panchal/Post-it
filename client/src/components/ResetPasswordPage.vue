@@ -1,7 +1,11 @@
 <template>
   <div class="reset-password">
-<!--     <Modal v-if="modalActive" :modalMessage="modalMessage" v-on:close-modal="closeModal" />
-    <Loading v-if="loading" /> -->
+    <transition name="error">
+      <ErrorPopup v-if="failure" msg="Error: Email is not associated with an account. Please create an account!"/>
+    </transition>
+    <transition name="success">
+      <SuccessPopup v-if="success" msg="Success: An email was sent to your account to reset your password!"/>
+    </transition>
     <div class="form-wrap">
       <form class="reset">
         <p class="login-register">
@@ -12,7 +16,7 @@
         <p class="reset-message">Enter your email to reset your password</p>
         <div class="input">
             <i class="fas fa-envelope"></i>
-            <input type="text" placeholder="Email"/>
+            <input v-model="email" type="text" placeholder="Email"/>
         </div>
         <button class="button is-medium" @click.prevent="resetPassword">Reset</button>
         <div class="angle"></div>
@@ -23,15 +27,38 @@
 </template>
 
 <script>
+import ErrorPopup from './ErrorPopup.vue'
+import SuccessPopup from './SuccessPopup.vue'
+import { api } from '../apis/api';
+
 export default {
   name: "ResetPasswordPage",
+  components: {
+    ErrorPopup,
+    SuccessPopup
+  },
   data() {
     return {
+      users: [],
       email: "",
-      modalActive: false,
-      modalMessage: "",
-      loading: null,
+      success: false,
+      failure: false
     };
+  },
+  methods: {
+    resetPassword: function() {
+      for(var i=0; i < this.users.length; i++) {
+        if(this.users[i].email == this.email) {
+          this.success = true;
+          return setTimeout(() => this.success = false, 2000);
+        }
+      }
+      this.failure = true;
+      setTimeout(() => this.failure = false, 2000);
+    }
+  },
+  async mounted() {
+    this.users = await api.getUsers();
   }
 };
 </script>
@@ -51,4 +78,55 @@ export default {
     }
   }
 }
+
+/* enter transitions */
+  .error-enter-from {
+    opacity: 0;
+    transform: translateY(-400px);
+  }
+  /* .error-enter-to {
+    opacity: 1;
+    transform: translateY(0);
+  } */
+  .error-enter-active {
+    transition: all 1s ease;
+  }
+  /* leave transitions */
+  /* .error-leave-from {
+    opacity: 1;
+    transform: translateY(0);
+  } */
+  .error-leave-to {
+    opacity: 0;
+    transform: translateY(-400px);
+  }
+  .error-leave-active {
+    transition: all 0.5s ease;
+  }
+
+
+  /* enter transitions */
+  .success-enter-from {
+    opacity: 0;
+    transform: translateY(-400px);
+  }
+  /* .success-enter-to {
+    opacity: 1;
+    transform: translateY(0);
+  } */
+  .success-enter-active {
+    transition: all 1s ease;
+  }
+  /* leave transitions */
+  /* .success-leave-from {
+    opacity: 1;
+    transform: translateY(0);
+  } */
+  .success-leave-to {
+    opacity: 0;
+    transform: translateY(-400px);
+  }
+  .success-leave-active {
+    transition: all 0.5s ease;
+  }
 </style>
