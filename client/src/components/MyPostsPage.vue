@@ -52,16 +52,6 @@ export default {
                                 "author": "Preet Panchal",
                                 "userid": "6257397b5d0e39067499ad30",
                                 "v": 0
-                            },
-                            {
-                                "_id": "62599885fd0c40f912299d70",
-                                "title": "sdf",
-                                "body": "sdf",
-                                "upvotes": 0,
-                                "downvotes": 0,
-                                "author": "Preet Panchal",
-                                "userid": "6257397b5d0e39067499ad30",
-                                "v": 0
                             } */
                         ]
         }
@@ -86,20 +76,10 @@ export default {
 
 <style scoped lang="scss">
 .post-card {
-  // border: solid 1px black;
-  // width: 900px;
-  margin: auto;
-  // background: #ffffff;
   padding: 30px 0px;
-  // border-radius: 10px;
   margin: 20px auto;
-  margin: auto;
-  // max-width: 800px;
   max-width: 900px;
-  // color: #444;
 }
-
-// ----- testing new postcard
 
 .wrapper {
   height: 100%;
@@ -117,9 +97,6 @@ export default {
   background: rgb(245, 245, 245);
   width: 900px;
   border-radius: 10px;
-  // top: 50%;
-  // left: 50%;
-  // transform: translate(-50%, -50%);
   box-shadow: 1px 1px 2rem rgba(54, 71, 107, 0.5);
 }
 
@@ -141,9 +118,6 @@ export default {
   font-size: 1.5rem;
   color: #333;
 }
-
-
-// ----
 
 .interact {
   display: inline-flex;
