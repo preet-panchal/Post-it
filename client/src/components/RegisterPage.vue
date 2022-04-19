@@ -21,6 +21,14 @@
             <input v-model="lastName" type="text" placeholder="Last Name" />
         </div>
         <div class="input">
+            <i class="fa fa-calendar"></i>
+            <input v-model="dateOfBirth" type="date">
+        </div>
+        <div class="input">
+            <i class="fas fa-user"></i>
+            <input v-model="userName" type="text" placeholder="Username" />
+        </div>
+        <div class="input">
             <i class="fas fa-envelope"></i>
             <input v-model="email" type="text" placeholder="Email"/>
         </div>
@@ -51,6 +59,8 @@ export default {
     return {
       firstName: "",
       lastName: "",
+      userName: "",
+      dateOfBirth: "",
       email: "",
       password: "",
       success: false,
@@ -62,11 +72,14 @@ export default {
   },
   methods: {
     registerUser: async function() {
-      var payload = {firstName: this.firstName, lastName: this.lastName, email: this.email, password: this.password};
+      console.log(this.dateOfBirth)
+      var payload = {firstName: this.firstName, lastName: this.lastName, userName: this.userName, dateOfBirth: this.dateOfBirth, email: this.email, password: this.password};
       try {
         await api.createUser(payload);
         this.firstName = "";
         this.lastName = "";
+        this.userName = "";
+        this.dateOfBirth= "";
         this.email = "";
         this.password = "";
         this.success = true;

@@ -15,6 +15,14 @@ const userSchema = Schema({
         type: String,
         match: [/^[A-z]+$/, 'Please provide a valid last name.']
     },
+    dateOfBirth: {
+        rquired: true,
+        type: String
+    },
+    userName: {
+        rquired: true,
+        type: String
+    },
     email: {
         required: true,
         type: String,
@@ -30,7 +38,10 @@ const userSchema = Schema({
         {
             postid: ObjectId,
         }
-    ]
+    ],
+    followers: {
+      type: Number
+    }
 },{
     collection: 'Users'
 });

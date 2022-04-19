@@ -22,6 +22,7 @@
                     <div class="buttons">
                         <button class="button is-medium" @click="redirectToRegister()">Sign Up</button>
                         <button class="button is-medium" @click="redirectToLogIn()">Log In</button>
+                        <button class="button is-medium" @click="redirectToLogIn()">Logout</button>
                     </div>
                 </div>
             </div>

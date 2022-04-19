@@ -33,13 +33,16 @@ const createUser = asyncHandler(async (req, res) => {
     const user = await Users.create({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
+      userName: req.body.userName,
+      dateOfBirth: req.body.dateOfBirth,
       email: req.body.email,
       password: req.body.password,
       posts: [
   /*         {
               postid: ObjectId,
           } */
-      ]
+      ],
+      followers: 0
     });
   
     res.status(200).json(user);
