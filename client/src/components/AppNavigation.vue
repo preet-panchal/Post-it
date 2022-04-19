@@ -67,11 +67,16 @@ export default {
 }
 
 .button {
-    background-color: #fbd758;
-    color: #36476b;
+    transition: 0.5s;
+    background-size: 200% auto;
+    /* background-color: #fbd758;
+    color: #36476b; */
+    background-image: linear-gradient(to right, #fbd758 0%, #36476b 100%, #fbd758 0%);
     &:hover {
-        background-color: #ffffff;
-        color: #36476b;
+        /* background-color: #ffffff;
+        color: #36476b; */
+        background-position: right center;
+        color: #ffffff;
     }
 }
 
