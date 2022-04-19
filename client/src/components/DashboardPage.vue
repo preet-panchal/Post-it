@@ -60,10 +60,13 @@ export default {
 
 .user-info {
   margin: auto; 
-  width: 40%; 
+  & h3 {
+    width: 40%; 
+  }
 }
 
 h2 {
+  background: #fbd758;
   color: #777; 
   text-transform: uppercase;
   font-size: 14px;
