@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="content">
         <transition name="success">
             <SuccessPopup v-if="postDeleted" msg="Success: Your post has been deleted!"/>
         </transition>
@@ -75,6 +75,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.content h1 {
+  padding-left: 17px;
+}
+
 .post-card {
   padding: 30px 0px;
   margin: 20px auto;
