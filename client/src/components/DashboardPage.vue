@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="content">
         <h1>My Dashboard</h1>
         <strong>Here is your user profile.</strong>
         <div v-for="post in user" :key="post._id" class="post-card">
@@ -35,6 +35,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
+.content h1 {
+  padding-left: 14px;
+}
 
 .img-content {
   margin: auto;
