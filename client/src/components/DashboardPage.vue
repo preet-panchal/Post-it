@@ -1,6 +1,7 @@
 <template>
     <div>
-        <h1>Your Bio</h1>
+        <h1>My Dashboard</h1>
+        <strong>Here is your user profile.</strong>
         <div v-for="post in user" :key="post._id" class="post-card">
           <div class="wrapper">
               <div class="blog_post">
