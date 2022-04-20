@@ -8,14 +8,14 @@
                   <img class="is-rounded" src="../assets/user-image.png">
                 </figure>
                 <div class="user-info">
-                  <h2>Full Name</h2>
                   <h3>{{post.firstName}} {{post.lastName}}</h3>
-                  <h2>Email</h2>
+                  <h2>Full Name</h2>
                   <h3>{{post.email}}</h3>
+                  <h2>Email</h2>
+                  <h3>{{post.userName}}</h3>
                   <h2>Username</h2>
-                  <h3>username</h3>
+                  <h3>{{post.dateOfBirth}}</h3>
                   <h2>Birthday</h2>
-                  <h3>birthday</h3>
                 </div>
               </div>
           </div>
@@ -60,9 +60,7 @@ export default {
 
 .user-info {
   margin: auto; 
-  & h3 {
-    width: 40%; 
-  }
+  text-align: center;
 }
 
 h2 {
@@ -73,10 +71,5 @@ h2 {
   letter-spacing: 1px;
 }
 
-h3 {
-  border: 0; 
-  border-bottom: 1px solid #fbd758;
-  padding-bottom: 10px;
-}
 
 </style>
