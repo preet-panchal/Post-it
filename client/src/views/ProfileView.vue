@@ -35,7 +35,7 @@
                 </li>
             </ul>
         </div>
-  
+
         <div v-if="isDashboardShown" class="content">
             <DashboardPage :user="user"/>
         </div>
@@ -131,12 +131,12 @@ export default {
             this.datePosted = month + "/" + day + "/" + year;
             console.log(this.datePosted);
             var payload = {
-              title: this.title, 
-              body: this.body, 
+              title: this.title,
+              body: this.body,
               datePosted: this.datePosted,
-              upvotes: 0, 
-              downvotes: 0, 
-              author: this.user[0].firstName + " " + this.user[0].lastName, 
+              upvotes: 0,
+              downvotes: 0,
+              author: this.user[0].firstName + " " + this.user[0].lastName,
               userid: '625f0ce7a146284f3bdb0209'
             };
             try {
@@ -194,6 +194,18 @@ export default {
   padding-left: 17px;
 }
 
+input {
+  font-family:'Poppins';
+  font-size: 18px; 
+  width: 800px;
+  height: 40px;
+
+  &:focus {
+    transition: all 0.3s ease-out;
+    box-shadow: 3px 3px 2rem rgba(54, 71, 107, 0.5);
+  }
+}
+
 .textArea, .button {
   font-weight: bold;
 }
@@ -204,13 +216,15 @@ export default {
 }
 
 textarea {
+  font-family:'Poppins';
+  font-size: 18px; 
   width: 800px;
   height: 300px;
-}
 
-input {
-  width: 400px;
-  height: 30px;
+  &:focus {
+    transition: all 0.3s ease-out;
+    box-shadow: 3px 3px 2rem rgba(54, 71, 107, 0.5);
+  }
 }
 
 .btn, .views {
