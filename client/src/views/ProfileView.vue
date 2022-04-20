@@ -40,19 +40,26 @@
             <DashboardPage :user="user"/>
         </div>
 
-        <form v-if="isCreateShown" class="content">
-            <h1>Create Post</h1>
-            <strong>You can create posts here.</strong>
-            <div class="title">
-                <p>Post Title:</p>
-                <input id="post-title" v-model="title" placeholder=" Post Title: ">
-            </div>
-            <div class="textArea">
-                <p>Post Body:</p>
-                <textarea id="post-body" v-model="body" placeholder=" Post Body: "></textarea>
-            </div>
-            <button class="button" @click.prevent="createPost">Post-It!</button>
-        </form>
+        
+          <form v-if="isCreateShown" class="content">
+              <h1>Create Post</h1>
+              <strong>You can create posts here.</strong>
+              <div class="post-card">
+                <div class="wrapper">
+                  <div class="blog_post">
+                    <div class="title">
+                        <p>Post Title:</p>
+                        <input id="post-title" v-model="title" placeholder=" Post Title: ">
+                    </div>
+                    <div class="textArea">
+                        <p>Post Body:</p>
+                        <textarea id="post-body" v-model="body" placeholder=" Post Body: "></textarea>
+                    </div>
+                    <button class="button" @click.prevent="createPost">Post-It!</button>
+                  </div>
+                </div>
+              </div>
+          </form>
 
         <div v-if="isMyPostsShown" class="content">
             <MyPostsPage/>
@@ -184,6 +191,31 @@ export default {
   padding-right: 20px;
   padding-left: 20px;
   color: #36476b;
+}
+
+.post-card {
+  padding: 30px 0px;
+  margin: 20px auto;
+  max-width: 900px;
+}
+
+.wrapper {
+  height: 100%;
+  width: 100%;
+
+  &:hover {
+    transition: all 0.3s ease-out;
+    box-shadow: 3px 3px 2rem rgba(54, 71, 107, 0.5);
+  }
+}
+
+.blog_post {
+  position: relative;
+  padding: 3rem 4rem 2rem 4rem;
+  background: rgb(245, 245, 245);
+  width: 900px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2rem rgba(54, 71, 107, 0.5);
 }
 
 .content {
