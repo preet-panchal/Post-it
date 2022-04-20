@@ -45,11 +45,11 @@
             <strong>You can create posts here.</strong>
             <div class="title">
                 <p>Post Title:</p>
-                <input id="post-title" v-model="title" placeholder="Title">
+                <input id="post-title" v-model="title" placeholder=" Post Title: ">
             </div>
             <div class="textArea">
                 <p>Post Body:</p>
-                <textarea id="post-body" v-model="body" placeholder="Post Body"></textarea>
+                <textarea id="post-body" v-model="body" placeholder=" Post Body: "></textarea>
             </div>
             <button class="button" @click.prevent="createPost">Post-It!</button>
         </form>
@@ -192,6 +192,10 @@ export default {
 
 .content h1 {
   padding-left: 17px;
+}
+
+.content p {
+  color: #36476b;
 }
 
 input {
