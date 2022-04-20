@@ -58,6 +58,7 @@ export default {
 
 .wrapper {
   align-items: center;
+  padding: 20px;
   height: 100%;
   width: 100%;
 
@@ -76,7 +77,8 @@ h2 {
   background: #fbd758;
   color: #777; 
   text-transform: uppercase;
-  font-size: 14px;
+  font-weight: bolder;
+  font-size: 18px;
   letter-spacing: 1px;
 }
 
