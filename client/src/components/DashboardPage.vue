@@ -4,7 +4,7 @@
         <div v-for="post in user" :key="post._id" class="post-card">
           <div class="wrapper">
               <div class="blog_post">
-                <figure class="image is-128x128">
+                <figure class="img-content image is-128x128">
                   <img class="is-rounded" src="../assets/user-image.png">
                 </figure>
                 <div class="user-info">
@@ -35,8 +35,11 @@ export default {
 
 <style scoped lang="scss">
 
-.post-card {
+.img-content {
   margin: auto;
+}
+
+.post-card {
   padding: 30px 0px;
   margin: 20px auto;
   max-width: 900px;
@@ -49,6 +52,7 @@ export default {
 }
 
 .wrapper {
+  align-items: center;
   height: 100%;
   width: 100%;
 
