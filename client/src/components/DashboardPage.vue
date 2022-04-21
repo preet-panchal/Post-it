@@ -35,7 +35,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
 .content h1 {
   padding-left: 14px;
 }
@@ -50,15 +49,7 @@ export default {
   max-width: 900px;
 }
 
-.blog-post {
-  padding: 3rem 4rem 2rem 4rem;
-  background: rgb(245, 245, 245);
-  width: 900px;
-}
-
 .wrapper {
-  align-items: center;
-  padding: 20px;
   height: 100%;
   width: 100%;
 
@@ -66,6 +57,15 @@ export default {
     transition: all 0.3s ease-out;
     box-shadow: 3px 3px 2rem rgba(54, 71, 107, 0.5);
   }
+}
+
+.blog_post {
+  position: relative;
+  padding: 3rem 4rem 2rem 4rem;
+  background: rgb(245, 245, 245);
+  width: 900px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2rem rgba(54, 71, 107, 0.5);
 }
 
 .user-info {
@@ -81,6 +81,4 @@ h2 {
   font-size: 18px;
   letter-spacing: 1px;
 }
-
-
 </style>
