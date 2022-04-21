@@ -1,22 +1,27 @@
 <template>
-    <div>
+    <div class="content">
         <h1>Anayltics</h1>
-        
+        <h6>Here are your analytics.</h6>
 
-        <v-app>
-        <v-container>
-        <v-row>
-            <v-col cols="2" class="d-flex justify-center align-center">
-            </v-col>
-            <v-col id="arc" />
-        </v-row>
-        </v-container>
-    </v-app>
-        <!-- chart -->
-    <D3BarChart
-      :config="chart_config"
-      :datum="chart_data"
-    ></D3BarChart>
+        <div class="post-card">
+            <div class="wrapper">
+                <div class="blog_post">
+                    <v-app>
+                        <v-container>
+                        <v-row>
+                            <v-col cols="2" class="d-flex justify-center align-center">
+                            </v-col>
+                            <v-col id="arc" />
+                        </v-row>
+                        </v-container>
+                    </v-app>
+                    
+                    <!-- chart -->
+                    <D3BarChart>
+                    </D3BarChart>
+                </div>
+            </div>
+        </div>
 
     </div> 
 
@@ -34,8 +39,8 @@ export default {
   data() {
     return {
       gdp: [
-        {country: "UpVotes", value: 10},
-        {country: "DownVotes", value: 13.4 }
+        {country: "UpVotes", value: 30},
+        {country: "DownVotes", value: 20}
       ]
     };
   },
@@ -55,7 +60,9 @@ export default {
         .attr("height", h);
 
       const sortedGDP = this.gdp.sort((a, b) => (a.value > b.value ? 1 : -1));
-      const color = d3.scaleOrdinal(d3.schemeDark2);
+      const color = d3.scaleOrdinal()
+            .domain(d3.range(2))
+            .range(['#fbd758', '#36476b']);
 
       const max_gdp = d3.max(sortedGDP, o => o.value);
 
@@ -66,12 +73,13 @@ export default {
 
       const arc = d3
         .arc()
-        .innerRadius((d, i) => (i + 1) * 50)
-        .outerRadius((d, i) => (i + 2) * 50)
+        .innerRadius((d, i) => (i + 1) * 60)
+        .outerRadius((d, i) => (i + 2) * 60)
         .startAngle(angleScale(0))
         .endAngle(d => angleScale(d.value));
 
       const g = svg.append("g");
+
       g.selectAll("path")
         .data(sortedGDP)
         .enter()
@@ -97,12 +105,12 @@ export default {
         .data(this.gdp)
         .enter()
         .append("text")
-        .text(d => `${d.country} -  ${d.value}`)
+        .text(d => `${d.country}: ${d.value}`)
         .attr("x", -150)
         .attr("dy", -8)
         .attr("y", (d, i) => -(i + 1) * 70);
 
-      g.attr("transform", "translate(300,200)");
+      g.attr("transform", "translate(260,200)");
   }
 }
     
@@ -112,5 +120,35 @@ export default {
 </script>
     
 <style scoped lang="scss">
+
+.content h1 {
+  padding-left: 14px;
+}
+
+.post-card {
+  padding: 30px 0px;
+  margin: 20px auto;
+  max-width: 900px;
+}
+
+.wrapper {
+  height: 100%;
+  width: 100%;
+
+  &:hover {
+    transition: all 0.3s ease-out;
+    box-shadow: 3px 3px 2rem rgba(54, 71, 107, 0.5);
+  }
+}
+
+.blog_post {
+  position: relative;
+  padding: 3rem 4rem 2rem 4rem;
+  background: rgb(245, 245, 245);
+  width: 900px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2rem rgba(54, 71, 107, 0.5);
+}
+
 
 </style>
