@@ -157,16 +157,6 @@ export default {
                 this.failure = true;
                 setTimeout(() => this.failure = false, 2000);
             }
-        },
-        async deletePost(postid) {
-          try {
-            await api.deletePost(postid);
-            this.postDeleted = true;
-            setTimeout(() => this.postDeleted = false, 2000);
-          } catch (e) {
-            console.log(e);
-          }
-          this.usersPosts = await api.getPostsByUser('625f0ce7a146284f3bdb0209');
         }
     },
     async mounted() {
