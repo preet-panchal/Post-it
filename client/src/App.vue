@@ -3,7 +3,6 @@
     <div class="app" >
       <AppNavigation/>
       <router-view />
-      <!-- <Footer v-if="!navigation" /> -->
       <AppFooter/>
     </div>
   </div>
@@ -12,6 +11,7 @@
 <script>
 import AppNavigation from './components/AppNavigation.vue'
 import AppFooter from './components/AppFooter.vue'
+//import createStore from './store/index'
 
 export default {
   name: 'App',

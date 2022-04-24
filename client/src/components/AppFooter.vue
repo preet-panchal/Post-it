@@ -25,8 +25,8 @@
         <div class="col-2">
           <ul>
             <router-link class="link" to="/">Posts</router-link>
-            <router-link class="link" to="/login">Login In</router-link>
-            <router-link class="link" to="/register">Register</router-link>
+            <router-link class="link" to="/profile">Profile</router-link>
+            <router-link class="link" to="/about">About</router-link>
           </ul>
         </div>
       </div>

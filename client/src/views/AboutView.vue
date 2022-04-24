@@ -47,7 +47,7 @@
           Know your audience
         </p>
         <p class="reveal-content subtitle is-6">
-          Find out which posts are a hit with Post-It’s built-in analytics. You will get to see what your audience most interested in.
+          Find out which posts are a hit with Post-It's built-in analytics. You will get to see what your audience most interested in.
         </p>
       </div>
       <div class="column is-half">
@@ -66,14 +66,20 @@
         <p class="reveal-content subtitle is-6">
           Save the moments that matter. Post-It allows you to safely store thousands of posts, photos, and more for free. So, what's the hold up?
         </p>
-        <button class="reveal-content button is-link is-medium" @click="redirectToRegister">Start Posting Now</button>
+        <button v-if="!this.cookies.get('userid')" class="reveal-content button is-link is-medium" @click="redirectToRegister">Start Posting Now</button>
       </div>
     </section>
   </div>
 </template>
 
 <script>
+import { useCookies } from "vue3-cookies";
+
 export default {
+  setup() {
+    const { cookies } = useCookies();
+    return { cookies };
+  },
   name: "AboutView",
   methods: {
     redirectToRegister() {
@@ -102,14 +108,6 @@ window.addEventListener("scroll", reveal);
 </script>
 
 <style lang="scss" scoped>
-.button {
-    transition: 0.5s;
-    background-size: 200% auto;
-    background-image: linear-gradient(to right, #fbd758 0%, #36476b 100%, #fbd758 0%);
-    &:hover {
-        background-position: right center;
-    }
-}
 .hero {
   background-image: url("../assets/about-cover.jpeg");
   background-size: cover; 

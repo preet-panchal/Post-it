@@ -1,6 +1,4 @@
 import axios from 'axios';
-/* import VueFlashMessage from 'vue-flash-message';
-import 'vue-flash-message/dist/vue-flash-message.min.css'; */
 
 
 const baseURL = 'http://localhost:3000/';
@@ -33,22 +31,22 @@ export const api = {
     const res = await axios.delete(baseURL + 'posts/' + postid);
     return res.data;
   },
+  updatePost: async (payload) => {
+    const res = await axios.post(baseURL + 'posts/' + payload.postid, payload);
+    return res.data;
+  },
   createUser: async (payload) => {
     const res = await axios.post(baseURL + 'users', payload);
     return res.data;
+  },
+  loginUser: async (payload) => {
+    const res = await axios.post(baseURL + 'login', payload);
+    //console.log(res)
+    return res.data;
+  },
+  logoutUser: async () => {
+    const res = await axios.get(baseURL + 'logout');
+    //console.log(res)
+    return res;
   }
-
-  /* ,
-  deletetask: handleError(async id => {
-    const res = await axios.delete(baseURL + id);
-    return res.data;
-  }),
-  createtask: handleError(async payload => {
-    const res = await axios.post(baseURL, payload);
-    return res.data;
-  }),
-  updatetask: handleError(async payload => {
-    const res = await axios.put(baseURL + payload._id, payload);
-    return res.data;
-  }) */
 };

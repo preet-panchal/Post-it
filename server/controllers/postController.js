@@ -27,6 +27,17 @@ const deletePost = asyncHandler(async (req, res) => {
   res.status(200).json(posts);
 });
 
+const updatePost = asyncHandler(async (req, res) => {
+  const Post = Posts.findOne({"_id": req.params.id}, (err, post) => {
+    if (req.body.type === 'upVote') {
+      post.upvotes = post.upvotes + 1;
+    } else if (req.body.type === 'downVote') {
+      post.downvotes = post.downvotes + 1;
+    }
+    post.save();
+  });
+});
+
 
 // @desc    Set goal
 // @route   POST /api/goals
@@ -117,5 +128,6 @@ module.exports = {
   getPosts,
   createPost,
   getPostsByUser,
-  deletePost
+  deletePost,
+  updatePost
 }

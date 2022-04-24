@@ -82,6 +82,7 @@ export default {
         this.dateOfBirth= "";
         this.email = "";
         this.password = "";
+        this.$router.push({ path: '/login' });
         this.success = true;
         setTimeout(() => this.success = false, 2000);
       } catch (e) {
@@ -99,14 +100,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.button {
+/* .button {
     transition: 0.5s;
     background-size: 200% auto;
     background-image: linear-gradient(to right, #fbd758 0%, #36476b 100%, #fbd758 0%);
     &:hover {
         background-position: right center;
     }
-}
+} */
 
 /* enter transitions */
   .error-enter-from {

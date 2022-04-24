@@ -29,11 +29,17 @@
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.2",
+    "cookie": "^0.4.2",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
+    "d3": "^7.4.4",
     "express": "^4.17.3",
     "express-async-handler": "^1.2.0",
+    "express-session": "^1.17.2",
     "mongodb": "^4.4.1",
-    "mongoose": "^6.2.10"
+    "mongoose": "^6.2.10",
+    "passport": "^0.5.2",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "concurrently": "^7.1.0",

@@ -11,36 +11,63 @@
         </div>
 
         <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start navbar-item">
+            <div class="navbar-end navbar-item">
                 <router-link class="route" to="/">Home</router-link>
                 <router-link class="route" to="/profile">Profile</router-link>
                 <router-link class="route" to="/about">About</router-link>
-            </div>
-
-            <div class="navbar-end">
-                <div class="navbar-item">
-                    <div class="buttons">
-                        <button class="button is-medium" @click="redirectToRegister()">Sign Up</button>
-                        <button class="button is-medium" @click="redirectToLogIn()">Log In</button>
-                        <button class="button is-medium" @click="redirectToLogIn()">Logout</button>
-                    </div>
-                </div>
             </div>
         </div>
     </nav>
 </template>
 
 <script>
+import { useCookies } from "vue3-cookies";
+import { api } from '../apis/api';
+import createStore from '../store/index';
 
 export default {
+    setup() {
+        const { cookies } = useCookies();
+/*         createStore.subscribe((mutation, state) => {
+            if (mutation.type == "change") {
+                this.testing = true;
+            }
+            console.log(mutation)
+            console.log(state)
+        }) */
+        return { cookies };
+     },
     name: 'AppNavigation',
+    data() {
+      return {
+          isLoggedIn: createStore.state.isLoggedIn,
+          testing: false
+      };
+    },
     methods: {
         redirectToRegister() {
             this.$router.push({ path: '/register' });
         },
         redirectToLogIn() {
             this.$router.push({ path: '/login' });
+        },
+        async logoutUser() {
+            try {
+                await api.logoutUser();
+                createStore.commit('change')
+                this.$router.go();
+                this.$router.push({ path: '/login' });
+            } catch (err) {
+                console.log(err);
+            }
         }
+    },
+    mounted() {
+        /* if (createStore.state.isLoggedIn == false) {
+            this.$router.push({ path: '/login' });
+        } */
+        console.log(createStore.state.isLoggedIn);
+        console.log(createStore.getters.getisLoggedIn)
     }
 }
 </script>
@@ -63,19 +90,6 @@ export default {
     padding: 0px 20px;
     &:hover {
         color: #ffffff;
-    }
-}
-
-.button {
-    transition: 0.5s;
-    background-size: 200% auto;
-    background-color: #fbd758;
-    color: #36476b; 
-    // background-image: linear-gradient(to right, #fbd758 0%, #36476b 100%, #fbd758 0%);
-    &:hover {
-        /* background-color: #ffffff;
-        color: #36476b; */
-        background-position: right center;
     }
 }
 

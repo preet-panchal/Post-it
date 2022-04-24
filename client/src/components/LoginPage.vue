@@ -18,7 +18,7 @@
       </div>
       <div class="input">
         <i class="fas fa-lock"></i>
-        <input v-model="password" type="text" placeholder="Password"/>
+        <input v-model="password" type="password" placeholder="Password"/>
       </div>
       <div v-show="error" class="error">{{ this.errorMsg }}</div>
       <router-link class="forgot-password" to="/reset-password">Forgot your password?</router-link>
@@ -30,13 +30,19 @@
 </template>
 
 <script>
+import { useCookies } from "vue3-cookies";
 import ErrorPopup from './ErrorPopup.vue'
 import SuccessPopup from './SuccessPopup.vue'
 import { api } from '../apis/api';
-// preet@panchal.com
+import createStore from '../store/index'
+// PreetPanchal@gmail.com
 // 12345678
 
 export default {
+  setup() {
+    const { cookies } = useCookies();
+    return { cookies };
+  },
   name: "LoginPage",
   components: {
     ErrorPopup,
@@ -50,38 +56,45 @@ export default {
       errorMsg: "",
       success: false,
       failure: false,
-      users: []
+      user: []
     };
   },
   methods: {
     loginUser: async function() {
       var payload = {email: this.email, password: this.password};
       try {
-        await api.loginUser(payload);
-/*         this.email = "";
-        this.password = ""; */
+        this.user = await api.loginUser(payload);
+        console.log(this.user)
+        console.log(this.cookies.get('userid'));
+        createStore.commit('change')
+        createStore.commit('upDate')
+        console.log(createStore.state.isLoggedIn)
+        //window.location.reload();
+        //this.$router.go();
+        this.$router.push({ path: '/profile' });
+        this.email = "";
+        this.password = "";
         this.success = true;
         setTimeout(() => this.success = false, 2000);
       } catch (e) {
-        //console.log(e.response.data.error);
+        console.log(e.response.data.error);
         this.errorMsg = 'ERROR: ' + e.response.data.error + '!';
         this.failure = true;
         setTimeout(() => this.failure = false, 2000);
       }
+    }
+  },
+  async mounted() {
+    console.log(createStore.state.isLoggedIn)
+    if (createStore.state.isLoggedIn == true) {
+      console.log("fuc")
+      await this.$router.push({ path: '/profile' });
     }
   }
 };
 </script>
 
 <style scoped lang="scss">
-.button {
-    transition: 0.5s;
-    background-size: 200% auto;
-    background-image: linear-gradient(to right, #fbd758 0%, #36476b 100%, #fbd758 0%);
-    &:hover {
-        background-position: right center;
-    }
-}
 
 /* enter transitions */
   .error-enter-from {

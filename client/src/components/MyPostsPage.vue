@@ -14,9 +14,9 @@
                   <p>{{post.body}}</p>
                 </div>
                 <div class="interact">
-                  <i class="fa-solid fa-chevron-up vote"></i>
+                  <i @click.prevent="this.isUpVoted ? post.upvotes++ : post.upvotes--; updatePost(post._id, 'upVote')" class="fa-solid fa-chevron-up vote"></i>
                   <p class="views">{{post.upvotes}}</p>
-                  <i class="fa-solid fa-chevron-down vote"></i>
+                  <i @click.prevent="this.isDownVoted ? post.downvotes++ : post.downvotes--; updatePost(post._id, 'downVote')" class="fa-solid fa-chevron-down vote"></i>
                   <p class="views">{{post.downvotes}}</p>
                   <i @click.prevent="deletePost(post._id)" class="fa-solid fa-trash trash"></i>
                 </div>
@@ -30,8 +30,13 @@
 <script>
 import SuccessPopup from '../components/SuccessPopup.vue'
 import { api } from '../apis/api';
+import { useCookies } from "vue3-cookies";
 
 export default {
+    setup() {
+      const { cookies } = useCookies();
+      return { cookies };
+    },
     name: 'MyPostsPage',
     components: {
         SuccessPopup
@@ -42,6 +47,10 @@ export default {
     data() {
         return {
             postDeleted: false,
+            isUpVoted: false,
+            isDownVoted: false,
+            upVotes: 0,
+            downVotes: 0,
             usersPosts: [
                             /* {
                                 "_id": "6258a6f7303e638a4ec62df9",
@@ -65,11 +74,32 @@ export default {
           } catch (e) {
             console.log(e);
           }
-          this.usersPosts = await api.getPostsByUser('625f0ce7a146284f3bdb0209');
+          this.usersPosts = await api.getPostsByUser(this.cookies.get('userid'));
+        },
+        async updatePost(postid, type) {
+          var payload = {
+              postid: postid,
+              type: type,
+              isUpVoted: this.isUpVoted,
+              isDownVoted: this.isDownVoted
+            };
+          if (type === 'upVote') {
+            this.isUpVoted = !this.isUpVoted;
+            this.isDownVoted = !this.isDownVoted;
+          } else if (type === 'downVote') {
+            this.isUpVoted = !this.isUpVoted;
+            this.isDownVoted = !this.isDownVoted;
+          }
+          try {
+            await api.updatePost(payload);
+          } catch (e) {
+            console.log(e);
+          }
+          //this.usersPosts = await api.getPostsByUser('625f0ce7a146284f3bdb0209');
         }
     },
     async mounted() {
-        this.usersPosts = await api.getPostsByUser('625f0ce7a146284f3bdb0209');
+        this.usersPosts = await api.getPostsByUser(this.cookies.get('userid'));
     }
 }
 </script>
@@ -137,6 +167,10 @@ export default {
   &:hover {
     color: rgb(0, 115, 255); 
     cursor: pointer;
+  }
+
+  &:focus {
+    color: aqua;
   }
 }
 
