@@ -15,7 +15,7 @@
       <h2>Login to Post-It</h2>
       <div class="input">
         <i class="fas fa-envelope"></i>
-        <input v-model="email"  type="text" placeholder="Email"/>
+        <input v-model="email" type="text" placeholder="Email"/>
       </div>
       <div class="input">
         <i class="fas fa-lock"></i>
@@ -87,6 +87,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
+input {
+  &:focus {
+    transition: all 0.3s ease-out;
+    box-shadow: 3px 3px 2rem rgba(54, 71, 107, 0.5);
+  }
+}
+
 /* enter transitions */
   .error-enter-from {
     opacity: 0;
