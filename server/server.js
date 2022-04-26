@@ -36,7 +36,6 @@ app.use(session({
     console.log("HTTP requestu", req.username, req.method, req.url, req.body);
     next();
 });
-626227f2b162ab51f8751415
 
 app.use(function (req, res, next){
     console.log("HTTP requesti", req.method, req.url, req.body);
@@ -89,7 +88,6 @@ require("./auth/passport-auth")(passport)
 
 
 app.get('/', (req,res) => {
-  //res.send(users);
   res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
 

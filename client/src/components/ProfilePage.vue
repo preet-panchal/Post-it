@@ -139,7 +139,6 @@ export default {
           this.isAnalyticsShown = false;
           this.isMyPostsShown = true;
           this.usersPosts = await api.getPostsByUser(this.cookies.get('userid'));
-          //this.usersPosts = await api.getPostsByUser('625f0ce7a146284f3bdb0209');
         },
         async createPost() {
             var dateObj = new Date();
@@ -181,7 +180,6 @@ export default {
     },
     async mounted() {
         this.user = await api.getUserById(this.cookies.get('userid'));
-        console.log(this.cookies.get('userid'));
     }
 };
 </script>

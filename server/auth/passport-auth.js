@@ -32,7 +32,6 @@ module.exports = function(passport) {
   });
     
   passport.deserializeUser((id, cb) => {
-    console.log("Fasd");
     Users.findOne({ _id: id }, (err, user) => {
       const userInformation = {
         userName: user.username,
