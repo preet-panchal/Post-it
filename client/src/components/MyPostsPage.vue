@@ -1,30 +1,31 @@
 <template>
-    <div class="content">
-        <transition name="success">
-            <SuccessPopup v-if="postDeleted" msg="Success: Your post has been deleted!"/>
-        </transition>
-        <h1>My Posts</h1>
-        <strong>Here are your posts.</strong>
-        <div v-for="post in usersPosts" :key="post._id" class="post-card">
-          <div class="wrapper">
-              <div class="blog_post">
-                <div class="container_copy">
-                  <h3>{{post.datePosted}} • {{post.author}}</h3>
-                  <h1>{{post.title}}</h1>
-                  <p>{{post.body}}</p>
-                </div>
-                <div class="interact">
-                  <i @click.prevent="this.isUpVoted ? post.upvotes++ : post.upvotes--; updatePost(post._id, 'upVote')" class="fa-solid fa-chevron-up vote"></i>
-                  <p class="views">{{post.upvotes}}</p>
-                  <i @click.prevent="this.isDownVoted ? post.downvotes++ : post.downvotes--; updatePost(post._id, 'downVote')" class="fa-solid fa-chevron-down vote"></i>
-                  <p class="views">{{post.downvotes}}</p>
-                  <i @click.prevent="deletePost(post._id)" class="fa-solid fa-trash trash"></i>
-                </div>
-            </div>
+  <div class="content">
+    <transition name="success">
+        <SuccessPopup v-if="postDeleted" msg="Success: Your post has been deleted!"/>
+    </transition>
+
+    <h1>My Posts</h1>
+    <strong>Here are your posts.</strong>
+
+    <div v-for="post in usersPosts" :key="post._id" class="post-card">
+      <div class="wrapper">
+        <div class="blog_post">
+          <div class="container_copy">
+            <h3>{{post.datePosted}} • {{post.author}}</h3>
+            <h1>{{post.title}}</h1>
+            <p>{{post.body}}</p>
+          </div>
+          <div class="interact">
+            <i @click.prevent="this.isUpVoted ? post.upvotes++ : post.upvotes--; updatePost(post._id, 'upVote')" class="fa-solid fa-chevron-up vote"></i>
+            <p class="views">{{post.upvotes}}</p>
+            <i @click.prevent="this.isDownVoted ? post.downvotes++ : post.downvotes--; updatePost(post._id, 'downVote')" class="fa-solid fa-chevron-down vote"></i>
+            <p class="views">{{post.downvotes}}</p>
+            <i @click.prevent="deletePost(post._id)" class="fa-solid fa-trash trash"></i>
           </div>
         </div>
+      </div>
     </div>
-    
+  </div>
 </template>
 
 <script>
@@ -51,18 +52,7 @@ export default {
             isDownVoted: false,
             upVotes: 0,
             downVotes: 0,
-            usersPosts: [
-                            /* {
-                                "_id": "6258a6f7303e638a4ec62df9",
-                                "title": "Test1",
-                                "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                                "upvotes": 0,
-                                "downvotes": 0,
-                                "author": "Preet Panchal",
-                                "userid": "6257397b5d0e39067499ad30",
-                                "v": 0
-                            } */
-                        ]
+            usersPosts: []
         }
     },
     methods: {
@@ -187,22 +177,17 @@ export default {
     opacity: 0;
     transform: translateY(-400px);
 }
-/* .success-enter-to {
-    opacity: 1;
-    transform: translateY(0);
-} */
+
 .success-enter-active {
     transition: all 1s ease;
 }
+
 /* leave transitions */
-/* .success-leave-from {
-    opacity: 1;
-    transform: translateY(0);
-} */
 .success-leave-to {
     opacity: 0;
     transform: translateY(-400px);
 }
+
 .success-leave-active {
     transition: all 0.5s ease;
 }
