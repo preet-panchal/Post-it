@@ -9,18 +9,16 @@ const cookie = require('cookie');
 // @route   GET /users
 // @access  Private
 const getUsers = asyncHandler(async (req, res) => {
-  console.log("all!!!!");
   const users = await Users.find();
   res.status(200).json(users);
 });
 
 const getUserById = asyncHandler(async (req, res) => {
-  console.log("profile!!!!");
   const user = await Users.find({"_id": req.params.id});
   res.status(200).json(user);
 });
 
-// @desc    Set user
+// @desc    create user
 // @route   POST /users
 // @access  Private
 const createUser = asyncHandler(async (req, res) => {
@@ -53,40 +51,10 @@ const createUser = asyncHandler(async (req, res) => {
   }
 })
 
-// @desc    Update goal
-// @route   PUT /api/goals/:id
+
+// @desc    Login user
+// @route   POST /users
 // @access  Private
-const updateUser = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.params.id)
-
-  /* if (!user) {
-    res.status(400)
-    throw new Error('Goal not found')
-  }
-
-  // Check for user
-  if (!req.user) {
-    res.status(401)
-    throw new Error('User not found')
-  }
-
-  // Make sure the logged in user matches the goal user
-  if (user.user.toString() !== req.user.id) {
-    res.status(401)
-    throw new Error('User not authorized')
-  }
-
-  const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-  }) */
-
-  res.status(200).json(updatedUser)
-})
-
-// @desc    Delete goal
-// @route   DELETE /api/goals/:id
-// @access  Private
-
 const loginUser = asyncHandler(async (req, res, next) => {
 
 /*   let email = req.body.email;
@@ -163,7 +131,6 @@ module.exports = {
   getUsers,
   getUserById,
   createUser,
-  updateUser,
   loginUser,
   logoutUser
 }
