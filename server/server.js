@@ -36,18 +36,27 @@ app.use(session({
     console.log("HTTP requestu", req.username, req.method, req.url, req.body);
     next();
 });
+626227f2b162ab51f8751415
 
 app.use(function (req, res, next){
     console.log("HTTP requesti", req.method, req.url, req.body);
     next();
 }); */
 
-/* const isAuthenticated = function(req, res, next) {
-    if (!req.session.email) return res.status(401).end("access denied");
+function getUserid(cookies){
+    var index = cookies.indexOf("userid=") + 7;
+    //return cookies.split(";")[1].split("=")[1];
+    return cookies.slice(index);
+}
+
+const isAuthenticated = function(req, res, next) {
+    console.log(req.params);
+    console.log(getUserid(req.headers.cookie));
+    if (!req.session.email || req.session.passport.user != req.params.id || req.session.passport.user != getUserid(req.headers.cookie)) {
+        return res.status(401).end("access denied");
+    }
     next();
-}; */
-
-
+};
 
 
 
@@ -65,18 +74,13 @@ app.post('/posts', createPost);
 app.delete('/posts/:id', deletePost);
 app.post('/posts/:id', updatePost);
 
-app.get('/profile/:id', getPostsByUser);
+app.get('/profile/:id', isAuthenticated, getPostsByUser);
 
 app.post('/login', loginUser);
 
 app.get('/logout', logoutUser);
 
 
-/* app.use(session({
-    secret: "Post-It Secret",
-    resave: true,
-    saveUninitialized: true
-})); */
 app.use(cookieParser("Post-It Secret"));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -85,7 +89,6 @@ require("./auth/passport-auth")(passport)
 
 
 app.get('/', (req,res) => {
-  console.log("jj");
   //res.send(users);
   res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
