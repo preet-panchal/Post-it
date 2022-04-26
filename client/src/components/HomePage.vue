@@ -57,28 +57,7 @@ export default {
   },
   data() {
     return {
-      posts: [
-        /* {
-          "_id": "6258a6f7303e638a4ec62df9",
-          "title": "Test1",
-          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          "upvotes": 0,
-          "downvotes": 0,
-          "author": "Preet Panchal",
-          "userid": "6257397b5d0e39067499ad30",
-          "v": 0
-        },
-        {
-          "_id": "62599885fd0c40f912299d70",
-          "title": "sdf",
-          "body": "sdf",
-          "upvotes": 0,
-          "downvotes": 0,
-          "author": "Preet Panchal",
-          "userid": "6257397b5d0e39067499ad30",
-          "v": 0
-        } */
-      ]
+      posts: []
     }
   },
   computed: {
@@ -91,7 +70,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-
 .interact {
   display: inline-flex;
   margin-right: 100%;
@@ -123,9 +101,9 @@ hr {
 }
 
 .video {
-  opacity: 0.9;
+  opacity: 1.0;
   &:hover {
-    opacity: 1.0;
+    opacity: 0.9;
   }
 }
 
@@ -231,20 +209,12 @@ $base: 0.6rem;
 }
 
 .post-card {
-  // border: solid 1px black;
-  // width: 900px;
   margin: auto;
-  // background: #ffffff;
   padding: 30px 0px;
-  // border-radius: 10px;
   margin: 20px auto;
   margin: auto;
-  // max-width: 800px;
   max-width: 900px;
-  // color: #444;
 }
-
-// ----- testing new postcard
 
 .wrapper {
   height: 100%;
@@ -262,9 +232,6 @@ $base: 0.6rem;
   background: rgb(245, 245, 245);
   width: 900px;
   border-radius: 10px;
-  // top: 50%;
-  // left: 50%;
-  // transform: translate(-50%, -50%);
   box-shadow: 1px 1px 2rem rgba(54, 71, 107, 0.5);
 }
 
@@ -304,5 +271,4 @@ $base: 0.6rem;
     cursor: pointer;
   }
 }
-
 </style>

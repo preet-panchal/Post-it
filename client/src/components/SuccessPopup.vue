@@ -7,16 +7,13 @@
 </template>
 
 <script>
-
 export default {
     name: "SuccessPopup",
     props: {
         msg: String
     }
 }
-
 </script>
-
 
 <style>
 .success-wrapper {

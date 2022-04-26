@@ -12,9 +12,9 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-end navbar-item">
-                <router-link class="route" to="/">Home</router-link>
-                <router-link class="route" to="/profile">Profile</router-link>
-                <router-link class="route" to="/about">About</router-link>
+                <router-link class="route" to="/">/Home</router-link>
+                <router-link class="route" to="/profile">/Profile</router-link>
+                <router-link class="route" to="/about">/About</router-link>
             </div>
         </div>
     </nav>
@@ -78,6 +78,7 @@ export default {
     background-color: #36476b;
     z-index: 4;
 }
+
 .navbar-item, .navbar-burger {
     color: #fbd758;
     font-size: 20px;

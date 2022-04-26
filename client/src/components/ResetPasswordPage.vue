@@ -94,48 +94,37 @@ export default {
     opacity: 0;
     transform: translateY(-400px);
   }
-  /* .error-enter-to {
-    opacity: 1;
-    transform: translateY(0);
-  } */
+
   .error-enter-active {
     transition: all 1s ease;
   }
+
   /* leave transitions */
-  /* .error-leave-from {
-    opacity: 1;
-    transform: translateY(0);
-  } */
   .error-leave-to {
     opacity: 0;
     transform: translateY(-400px);
   }
+
   .error-leave-active {
     transition: all 0.5s ease;
   }
-
 
   /* enter transitions */
   .success-enter-from {
     opacity: 0;
     transform: translateY(-400px);
   }
-  /* .success-enter-to {
-    opacity: 1;
-    transform: translateY(0);
-  } */
+
   .success-enter-active {
     transition: all 1s ease;
   }
+
   /* leave transitions */
-  /* .success-leave-from {
-    opacity: 1;
-    transform: translateY(0);
-  } */
   .success-leave-to {
     opacity: 0;
     transform: translateY(-400px);
   }
+  
   .success-leave-active {
     transition: all 0.5s ease;
   }

@@ -111,9 +111,9 @@ window.addEventListener("scroll", reveal);
 .hero {
   background-image: url("../assets/about-cover.jpeg");
   background-size: cover; 
-  opacity: 0.9;
+  opacity: 1.0;
   &:hover {
-    opacity: 1.0;
+    opacity: 0.9;
   }
 }
 

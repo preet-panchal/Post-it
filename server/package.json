@@ -39,7 +39,8 @@
     "mongodb": "^4.4.1",
     "mongoose": "^6.2.10",
     "passport": "^0.5.2",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "serve": "^13.0.2"
   },
   "devDependencies": {
     "concurrently": "^7.1.0",

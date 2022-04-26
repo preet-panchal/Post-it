@@ -6,6 +6,7 @@
     <transition name="success">
       <SuccessPopup v-if="success" msg="Success: Your account is logged in!"/>
     </transition>
+
     <form class="login">
       <p class="login-register">
         Don't have an account?
@@ -25,6 +26,7 @@
       <button class="button is-medium" @click.prevent="loginUser">Log In</button>
       <div class="angle"></div>
     </form>
+    
     <div class="background"></div>
   </div>
 </template>
@@ -35,8 +37,8 @@ import ErrorPopup from './ErrorPopup.vue'
 import SuccessPopup from './SuccessPopup.vue'
 import { api } from '../apis/api';
 import createStore from '../store/index'
-// PreetPanchal@gmail.com
-// 12345678
+// test user email: test@test.com
+// test user password: test1234
 
 export default {
   setup() {
@@ -95,24 +97,17 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
 /* enter transitions */
   .error-enter-from {
     opacity: 0;
     transform: translateY(-400px);
   }
-  /* .error-enter-to {
-    opacity: 1;
-    transform: translateY(0);
-  } */
+
   .error-enter-active {
     transition: all 1s ease;
   }
+
   /* leave transitions */
-  /* .error-leave-from {
-    opacity: 1;
-    transform: translateY(0);
-  } */
   .error-leave-to {
     opacity: 0;
     transform: translateY(-400px);
@@ -121,28 +116,21 @@ export default {
     transition: all 0.5s ease;
   }
 
-
   /* enter transitions */
   .success-enter-from {
     opacity: 0;
     transform: translateY(-400px);
   }
-  /* .success-enter-to {
-    opacity: 1;
-    transform: translateY(0);
-  } */
+
   .success-enter-active {
     transition: all 1s ease;
   }
-  /* leave transitions */
-  /* .success-leave-from {
-    opacity: 1;
-    transform: translateY(0);
-  } */
+
   .success-leave-to {
     opacity: 0;
     transform: translateY(-400px);
   }
+
   .success-leave-active {
     transition: all 0.5s ease;
   }

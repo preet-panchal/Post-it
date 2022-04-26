@@ -7,14 +7,12 @@
 </template>
 
 <script>
-
 export default {
     name: "ErrorPopup",
     props: {
         msg: String
     }
 }
-
 </script>
 
 
@@ -25,6 +23,7 @@ export default {
   top: 15%;
   z-index: 5;
 }
+
 .error {
   padding: 25px;
   color: white;
