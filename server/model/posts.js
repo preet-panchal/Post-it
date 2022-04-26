@@ -26,7 +26,7 @@ const postSchema = Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Users',
         required: true
-    } //refernece
+    } //reference
 },{
     collection: 'Posts'
 });
