@@ -24,14 +24,14 @@
         </div>
         <div class="col-2">
           <ul>
-            <router-link class="link" to="/">Posts</router-link>
-            <router-link class="link" to="/profile">Profile</router-link>
-            <router-link class="link" to="/about">About</router-link>
+            <router-link class="link" to="/">/Posts</router-link>
+            <router-link class="link" to="/profile">/Profile</router-link>
+            <router-link class="link" to="/about">/About</router-link>
           </ul>
         </div>
       </div>
       <div class="right">
-        <p><i class="fas fa-copyright"></i> Copyright 2022 All Rights Reserved</p>
+        <p>Copyright <i class="fas fa-copyright"></i> 2022 Post-It. All Rights Reserved.</p>
       </div>
     </div>
   </footer>
@@ -49,6 +49,7 @@ footer {
   margin-top: auto;
   padding: 75px 25px;
   background-color: #36476b;
+
   .container {
     display: flex;
     flex-direction: column;
@@ -57,10 +58,12 @@ footer {
       flex-direction: row;
       gap: 0px;
     }
+    
     > div {
       display: flex;
       flex: 1;
     }
+
     .left {
       gap: 32px;
       color: #fff;
@@ -72,23 +75,28 @@ footer {
         align-items: initial;
         gap: 0;
       }
+
       .header {
         text-align: center;
         font-size: 24px;
-        color: #fff;
         margin-bottom: 16px;
         text-decoration: none;
         font-weight: 600;
         color: #fbd758;
+        &:hover {
+          color: #fff;
+        }
         @media (min-width: 800px) {
           text-align: initial;
         }
       }
+
       ul {
         gap: 16px;
         list-style: none;
         display: flex;
       }
+
       .col-1,
       .col-2 {
         gap: 32px;
@@ -98,6 +106,7 @@ footer {
           gap: 0;
         }
       }
+
       .col-1 {
         flex-direction: column;
         h2 {
@@ -106,6 +115,7 @@ footer {
             text-align: initial;
           }
         }
+
         ul {
           margin-top: auto;
           li {
@@ -119,6 +129,7 @@ footer {
           }
         }
       }
+
       .col-2 {
         ul {
           height: 100%;
@@ -131,13 +142,16 @@ footer {
           .link {
             font-size: 16px;
             font-weight: 500;
-            color: #fff;
             text-decoration: none;
             color: #fbd758;
+            &:hover {
+              color: #fff;
+            }
           }
         }
       }
     }
+
     .right {
       gap: 32px;
       color: #fff;
@@ -148,6 +162,7 @@ footer {
         gap: 0;
       }
     }
+
     p {
       margin-top: auto;
       color: #fbd758;
