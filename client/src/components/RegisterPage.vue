@@ -72,7 +72,6 @@ export default {
   },
   methods: {
     registerUser: async function() {
-      console.log(this.dateOfBirth)
       var payload = {firstName: this.firstName, lastName: this.lastName, userName: this.userName, dateOfBirth: this.dateOfBirth, email: this.email, password: this.password};
       try {
         await api.createUser(payload);
@@ -86,7 +85,6 @@ export default {
         this.success = true;
         setTimeout(() => this.success = false, 2000);
       } catch (e) {
-        console.log(e.response.data);
         this.errorMsg = 'ERROR: ' + e.response.data.error + '!';
         this.failure = true;
         setTimeout(() => this.failure = false, 2000);

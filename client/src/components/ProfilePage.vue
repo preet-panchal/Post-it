@@ -146,7 +146,6 @@ export default {
             var day = dateObj.getUTCDate();
             var year = dateObj.getUTCFullYear();
             this.datePosted = month + "/" + day + "/" + year;
-            console.log(this.datePosted);
             var payload = {
               title: this.title,
               body: this.body,
