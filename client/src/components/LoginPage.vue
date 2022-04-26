@@ -66,31 +66,21 @@ export default {
       var payload = {email: this.email, password: this.password};
       try {
         this.user = await api.loginUser(payload);
-        console.log(this.user)
-        console.log(this.cookies.get('userid'));
         createStore.commit('change')
         createStore.commit('upDate')
-        console.log(createStore.state.isLoggedIn)
+        //console.log(createStore.state.isLoggedIn)
         //window.location.reload();
         //this.$router.go();
-        this.$router.push({ path: '/profile' });
+        this.$router.push({ path: '/profile', replace: true });
         this.email = "";
         this.password = "";
         this.success = true;
         setTimeout(() => this.success = false, 2000);
       } catch (e) {
-        console.log(e.response.data.error);
         this.errorMsg = 'ERROR: ' + e.response.data.error + '!';
         this.failure = true;
         setTimeout(() => this.failure = false, 2000);
       }
-    }
-  },
-  async mounted() {
-    console.log(createStore.state.isLoggedIn)
-    if (createStore.state.isLoggedIn == true) {
-      console.log("fuc")
-      await this.$router.push({ path: '/profile' });
     }
   }
 };

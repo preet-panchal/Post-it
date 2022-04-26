@@ -21,7 +21,7 @@
             <input v-model="lastName" type="text" placeholder="Last Name" />
         </div>
         <div class="input">
-            <i class="fa fa-calendar"></i>
+            <i class="fas fa-birthday-cake"></i>
             <input v-model="dateOfBirth" type="date">
         </div>
         <div class="input">
