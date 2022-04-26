@@ -27,12 +27,14 @@ export default {
   @media (min-width: 900px) {
     width: 100%;
   }
+
   .login-register {
     margin-bottom: 20px;
     .router-link {
       color: #000;
     }
   }
+
   form {
     font-size: 20px;
     padding: 0 10px;
@@ -45,6 +47,7 @@ export default {
     @media (min-width: 900px) {
       padding: 0 50px;
     }
+
     h2 {
       text-align: center;
       font-size: 32px;
@@ -54,6 +57,7 @@ export default {
         font-size: 40px;
       }
     }
+
     .forgot-password {
       text-decoration: none;
       color: #000;
@@ -66,6 +70,7 @@ export default {
         border-color: #303030;
       }
     }
+
     .angle {
       display: none;
       position: absolute;
@@ -79,11 +84,12 @@ export default {
       }
     }
   }
+
   .background {
     display: none;
     flex: 2;
     background-size: cover;
-    background-image: url("../assets/test.jpg");
+    background-image: url("../assets/login-view.jpeg");
     width: 100%;
     height: 100%;
     @media (min-width: 900px) {
@@ -100,24 +106,25 @@ export default {
     margin-bottom: 15px;
     max-height: 50px;
     height: 100%;
+
     input {
-        margin-left: 5px;
-        font-size: 20px;
-        width: 90%;
-        border: none;
-        background-color: #f2f7f6;
-        &:focus {
-            outline: none;
-        }
+      margin-left: 5px;
+      font-size: 20px;
+      width: 90%;
+      border: none;
+      background-color: #f2f7f6;
+      &:focus {
+          outline: none;
+      }
     }
 }
 
 .button {
-    background-color: #fbd758;
-    color: #36476b;
-    &:hover {
-        background-color: #36476b;
-        color: #fbd758;
-    }
+  background-color: #fbd758;
+  color: #36476b;
+  &:hover {
+      background-color: #36476b;
+      color: #fbd758;
+  }
 }
 </style>
