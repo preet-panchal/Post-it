@@ -15,7 +15,6 @@ export default {
 }
 </script>
 
-
 <style>
 .error-wrapper {
   position: fixed;
