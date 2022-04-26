@@ -49,8 +49,6 @@ function getUserid(cookies){
 }
 
 const isAuthenticated = function(req, res, next) {
-    console.log(req.params);
-    console.log(getUserid(req.headers.cookie));
     if (!req.session.email || req.session.passport.user != req.params.id || req.session.passport.user != getUserid(req.headers.cookie)) {
         return res.status(401).end("access denied");
     }
