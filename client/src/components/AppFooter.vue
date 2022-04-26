@@ -31,7 +31,7 @@
         </div>
       </div>
       <div class="right">
-        <p>Copyright <i class="fas fa-copyright"></i> 2022 Post-It. All Rights Reserved.</p>
+        <p>Copyright <i class="fas fa-copyright"></i> 2022 <router-link class="footer-brand" to="/">Post-It</router-link>. All Rights Reserved.</p>
       </div>
     </div>
   </footer>
@@ -149,6 +149,15 @@ footer {
             }
           }
         }
+      }
+    }
+
+    .footer-brand {
+      text-decoration: none;
+      font-weight: 600;
+      color: #fbd758;
+      &:hover {
+        color: #fff;
       }
     }
 
