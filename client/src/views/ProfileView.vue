@@ -50,8 +50,6 @@ export default {
         redirectToLogIn() {
             this.$router.push({ path: '/login' });
         },
-    },
-    async mounted() {
     }
 };
 </script>

@@ -34,9 +34,9 @@
             <p>{{post.body}}</p>
           </div>
           <div class="interact">
-            <i class="fa-solid fa-chevron-up vote"></i>
+            <i @click.prevent="this.cookies.get('userid') ? (post.upvotes++, updatePost(post._id, 'upVote')) : null" class="fa-solid fa-chevron-up vote"></i>
             <p class="views">{{post.upvotes}}</p>
-            <i class="fa-solid fa-chevron-down vote"></i>
+            <i @click.prevent="this.cookies.get('userid') ? (post.downvotes++, updatePost(post._id, 'downVote')) : null" class="fa-solid fa-chevron-down vote"></i>
             <p class="views">{{post.downvotes}}</p>
             <i class="fa-solid fa-trash trash"></i>
           </div>
@@ -49,8 +49,13 @@
 
 <script>
 import { api } from '../apis/api';
+import { useCookies } from "vue3-cookies";
 
 export default {
+  setup() {
+    const { cookies } = useCookies();
+    return { cookies };
+  },
   name: 'HomePage',
   props: {
     msg: String
@@ -60,7 +65,19 @@ export default {
       posts: []
     }
   },
-  computed: {
+  methods: {
+    async updatePost(postid, type) {
+      var payload = {
+          postid: postid,
+          type: type
+        };
+      try {
+        await api.updatePost(payload);
+      } catch (e) {
+        console.log(e);
+      }
+      this.posts = await api.getPosts();
+    }
   },
   async mounted() {
     this.posts = await api.getPosts();

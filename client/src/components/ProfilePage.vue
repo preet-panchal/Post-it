@@ -70,7 +70,7 @@
         </div>
 
         <div v-if="isAnalyticsShown" class="content">
-            <AnalyticsPage :upvotes="0" :downvotes="0"/>
+            <AnalyticsPage/>
         </div>
     </div>
 </template>

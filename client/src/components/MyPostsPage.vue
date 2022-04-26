@@ -1,30 +1,28 @@
 <template>
   <div class="content">
-    <transition name="success">
-        <SuccessPopup v-if="postDeleted" msg="Success: Your post has been deleted!"/>
-    </transition>
-
-    <h1>My Posts</h1>
-    <strong>Here are your posts.</strong>
-
-    <div v-for="post in usersPosts" :key="post._id" class="post-card">
-      <div class="wrapper">
-        <div class="blog_post">
-          <div class="container_copy">
-            <h3>{{post.datePosted}} • {{post.author}}</h3>
-            <h1>{{post.title}}</h1>
-            <p>{{post.body}}</p>
-          </div>
-          <div class="interact">
-            <i @click.prevent="this.isUpVoted ? post.upvotes++ : post.upvotes--; updatePost(post._id, 'upVote')" class="fa-solid fa-chevron-up vote"></i>
-            <p class="views">{{post.upvotes}}</p>
-            <i @click.prevent="this.isDownVoted ? post.downvotes++ : post.downvotes--; updatePost(post._id, 'downVote')" class="fa-solid fa-chevron-down vote"></i>
-            <p class="views">{{post.downvotes}}</p>
-            <i @click.prevent="deletePost(post._id)" class="fa-solid fa-trash trash"></i>
+        <transition name="success">
+            <SuccessPopup v-if="postDeleted" msg="Success: Your post has been deleted!"/>
+        </transition>
+        <h1>My Posts</h1>
+        <strong>Here are your posts.</strong>
+        <div v-for="post in usersPosts" :key="post._id" class="post-card">
+          <div class="wrapper">
+              <div class="blog_post">
+                <div class="container_copy">
+                  <h3>{{post.datePosted}} • {{post.author}}</h3>
+                  <h1>{{post.title}}</h1>
+                  <p>{{post.body}}</p>
+                </div>
+                <div :id="post._id" class="interact">
+                  <i @click.prevent="post.upvotes++; updatePost(post._id, 'upVote')" class="fa-solid fa-chevron-up vote"></i>
+                  <p id="upvote" class="views">{{post.upvotes}}</p>
+                  <i @click.prevent="post.downvotes++; updatePost(post._id, 'downVote')" class="fa-solid fa-chevron-down vote"></i>
+                  <p id="downvote" class="views">{{post.downvotes}}</p>
+                  <i @click.prevent="deletePost(post._id)" class="fa-solid fa-trash trash"></i>
+                </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -69,17 +67,8 @@ export default {
         async updatePost(postid, type) {
           var payload = {
               postid: postid,
-              type: type,
-              isUpVoted: this.isUpVoted,
-              isDownVoted: this.isDownVoted
+              type: type
             };
-          if (type === 'upVote') {
-            this.isUpVoted = !this.isUpVoted;
-            this.isDownVoted = !this.isDownVoted;
-          } else if (type === 'downVote') {
-            this.isUpVoted = !this.isUpVoted;
-            this.isDownVoted = !this.isDownVoted;
-          }
           try {
             await api.updatePost(payload);
           } catch (e) {
