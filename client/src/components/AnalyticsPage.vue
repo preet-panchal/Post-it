@@ -65,10 +65,10 @@ export default {
 
       series: [{
             name: 'UpVotes',
-            data: [31, 40, 28, 51, 42, 109, 100]
+            data: []
           }, {
             name: 'DownVotes',
-            data: [11, 32, 45, 32, 34, 52, 41]
+            data: []
           }
       ],
       chartOptions: {
@@ -84,13 +84,7 @@ export default {
           curve: 'smooth'
         },
         xaxis: {
-          type: 'datetime',
-          categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
-        },
-        tooltip: {
-          x: {
-            format: 'dd/MM/yy HH:mm'
-          },
+          categories: []
         },
       },
     };
@@ -98,12 +92,12 @@ export default {
    async mounted() {
     this.usersPosts = await api.getPostsByUser(this.cookies.get('userid'));
     for (var i = 0; i < this.usersPosts.length; i++) {
-      //console.log(this.usersPosts[i].upvotes);
       this.totalUpVotes += this.usersPosts[i].upvotes;
+      this.series[0].data.push(this.usersPosts[i].upvotes);
       this.totalDownVotes += this.usersPosts[i].downvotes;
+      this.series[1].data.push(this.usersPosts[i].downvotes);
+      this.chartOptions.xaxis.categories.push(`Push${i + 1}`);
     }
-    console.log(this.totalUpVotes)
-    console.log(this.totalDownVotes)
     this.totalVotes[0].value = this.totalUpVotes;
     this.totalVotes[1].value = this.totalDownVotes;
     this.generateArc();
