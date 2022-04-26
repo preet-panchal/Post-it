@@ -23,29 +23,89 @@
             </div>
         </div>
 
+        <div class="post-card">
+            <div class="wrapper">
+                <div class="blog_post">
+                  <div id="chart">
+                    <apexchart type="area" height="350" :options="chartOptions" :series="series"></apexchart>
+                  </div>
+                </div>
+            </div>
+        </div>
+
     </div> 
 
 </template>
 
 <script>
 import * as d3 from "d3";
+import { api } from '../apis/api';
+import { useCookies } from "vue3-cookies";
+import VueApexCharts from "vue3-apexcharts";
 
 export default {
-    name: 'AnalyticsPage',
-    props: {
-        upvotes: Number,
-        downvotes: Number
-    },
+  setup() {
+    const { cookies } = useCookies();
+    return { cookies };
+  },
+  name: 'AnalyticsPage',
+  components: {
+    apexchart: VueApexCharts,
+  },
   data() {
     return {
-      gdp: [
-        {country: "UpVotes", value: 30},
-        {country: "DownVotes", value: 20}
-      ]
+      totalVotes: [
+        {type: "UpVotes", value: 0},
+        {type: "DownVotes", value: 0}
+      ],
+      usersPosts: [],
+      totalUpVotes: 0,
+      totalDownVotes: 0,
+
+
+      series: [{
+            name: 'UpVotes',
+            data: [31, 40, 28, 51, 42, 109, 100]
+          }, {
+            name: 'DownVotes',
+            data: [11, 32, 45, 32, 34, 52, 41]
+          }
+      ],
+      chartOptions: {
+        colors: ['#36476b', '#fbd758'],
+        chart: {
+          height: 350,
+          type: 'area'
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          curve: 'smooth'
+        },
+        xaxis: {
+          type: 'datetime',
+          categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+        },
+        tooltip: {
+          x: {
+            format: 'dd/MM/yy HH:mm'
+          },
+        },
+      },
     };
   },
-
-   mounted() {
+   async mounted() {
+    this.usersPosts = await api.getPostsByUser(this.cookies.get('userid'));
+    for (var i = 0; i < this.usersPosts.length; i++) {
+      //console.log(this.usersPosts[i].upvotes);
+      this.totalUpVotes += this.usersPosts[i].upvotes;
+      this.totalDownVotes += this.usersPosts[i].downvotes;
+    }
+    console.log(this.totalUpVotes)
+    console.log(this.totalDownVotes)
+    this.totalVotes[0].value = this.totalUpVotes;
+    this.totalVotes[1].value = this.totalDownVotes;
     this.generateArc();
   },
   methods: {
@@ -59,16 +119,16 @@ export default {
         .attr("width", w)
         .attr("height", h);
 
-      const sortedGDP = this.gdp.sort((a, b) => (a.value > b.value ? 1 : -1));
+      const sortedtotalVotes = this.totalVotes.sort((a, b) => (a.value > b.value ? 1 : -1));
       const color = d3.scaleOrdinal()
             .domain(d3.range(2))
             .range(['#fbd758', '#36476b']);
 
-      const max_gdp = d3.max(sortedGDP, o => o.value);
+      const max_totalVotes = d3.max(sortedtotalVotes, o => o.value);
 
       const angleScale = d3
         .scaleLinear()
-        .domain([0, max_gdp])
+        .domain([0, max_totalVotes])
         .range([0, 1.5 * Math.PI]);
 
       const arc = d3
@@ -81,7 +141,7 @@ export default {
       const g = svg.append("g");
 
       g.selectAll("path")
-        .data(sortedGDP)
+        .data(sortedtotalVotes)
         .enter()
         .append("path")
         .attr("d", arc)
@@ -102,10 +162,10 @@ export default {
         });
 
       g.selectAll("text")
-        .data(this.gdp)
+        .data(this.totalVotes)
         .enter()
         .append("text")
-        .text(d => `${d.country}: ${d.value}`)
+        .text(d => `${d.type}: ${d.value}`)
         .attr("x", -150)
         .attr("dy", -8)
         .attr("y", (d, i) => -(i + 1) * 70);

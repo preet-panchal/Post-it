@@ -11,6 +11,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-regular-svg-icons": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "apexcharts": "^3.35.0",
     "axios": "^0.26.1",
     "core-js": "^3.8.3",
     "d3": "^7.4.4",
@@ -18,6 +19,7 @@
     "vue-cookies": "^1.8.0",
     "vue-flash-message": "^0.7.2",
     "vue-router": "^4.0.3",
+    "vue3-apexcharts": "^1.4.1",
     "vue3-cookies": "^1.0.6",
     "vuex": "^4.0.0"
   },
