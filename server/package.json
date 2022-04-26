@@ -4,7 +4,7 @@
   "description": "csci3230u final project",
   "main": "server.js",
   "scripts": {
-    "start": "node server/server.js",
+    "start": "node server.js",
     "server": "nodemon server/server.js",
     "client": "npm run build --prefix ../client",
     "test": "npm run serve --prefix ../client",
