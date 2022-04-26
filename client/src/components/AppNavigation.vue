@@ -22,7 +22,6 @@
 
 <script>
 import { useCookies } from "vue3-cookies";
-import { api } from '../apis/api';
 import createStore from '../store/index';
 
 export default {
@@ -40,35 +39,9 @@ export default {
     name: 'AppNavigation',
     data() {
         return {
-            isLoggedIn: createStore.state.isLoggedIn,
-            testing: false
+            isLoggedIn: createStore.state.isLoggedIn
         };
     },
-    methods: {
-        redirectToRegister() {
-            this.$router.push({ path: '/register' });
-        },
-        redirectToLogIn() {
-            this.$router.push({ path: '/login' });
-        },
-        async logoutUser() {
-            try {
-                await api.logoutUser();
-                createStore.commit('change')
-                this.$router.go();
-                this.$router.push({ path: '/login' });
-            } catch (err) {
-                console.log(err);
-            }
-        }
-    },
-    mounted() {
-        /* if (createStore.state.isLoggedIn == false) {
-            this.$router.push({ path: '/login' });
-        } */
-        console.log(createStore.state.isLoggedIn);
-        console.log(createStore.getters.getisLoggedIn)
-    }
 }
 </script>
 
