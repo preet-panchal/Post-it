@@ -36,13 +36,13 @@ export default {
             console.log(state)
         }) */
         return { cookies };
-     },
+        },
     name: 'AppNavigation',
     data() {
-      return {
-          isLoggedIn: createStore.state.isLoggedIn,
-          testing: false
-      };
+        return {
+            isLoggedIn: createStore.state.isLoggedIn,
+            testing: false
+        };
     },
     methods: {
         redirectToRegister() {
