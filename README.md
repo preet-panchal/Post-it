@@ -10,7 +10,7 @@ April 27, 2022 <br>
 | :------------------------:|:------------------------:|:--------------------------------------:|
 | Preet Panchal | 100707094 | [preet-panchal](https://github.com/preet-panchal) |
 | Eihab Syed | 100707448 | [EihabSyed](https://github.com/EihabSyed) |
-| Fahad Bhatti | 100707448 | [FahadBhatti](https://github.com/FahadBhatti424) |
+| Fahad Bhatti | 100749152 | [FahadBhatti](https://github.com/FahadBhatti424) |
 | Kaathihan Luxmachandran | 100704762 | [Kaathihan](https://github.com/Kaathihan) |
 | Sukhpreet Bansal | 100705684 | [Sukhpreet-7](https://github.com/Sukhpreet-7) |
 
@@ -19,8 +19,8 @@ cd into client and run npm install
 cd into server and run npm install
 While still in server run npm run deploy to concurrently run client and server
 
-## About GitMock:
-GitMock is a simple mock application of GitHub Desktop. In CSCI2020U, we
+## About Post-It:
+is a simple mock application of GitHub Desktop. In CSCI2020U, we
 learned about File IO, Multithreading and Sockets. Using JavaFX and Gradle,
 our group decided to take inspiration from the GitHub desktop app to create
 a simple gradle app which supports Client/Server architecture. GitMock allows
