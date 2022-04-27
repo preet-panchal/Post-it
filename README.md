@@ -37,5 +37,5 @@ Please watch this short demo video to get help running the app or
 simply view the app: https://www.youtube.com/watch?v=WcF2pAM4968
 
 ## Independent Study:
-Deployment done using DigitalOcean. 
-Please see `Post-It Project Independent Study.pdf` for slides. 
+Deployment done using DigitalOcean. <br>
+Please see `Post-It Project Independent Study.pdf` for presentation on integration. 
