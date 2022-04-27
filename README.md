@@ -1,8 +1,12 @@
 # Post-it
-CSCI3230U Final Project - Group 19
-# About Us
 
-- - Our team consists of the following members:
+## CSCI 2020U - Software Systems Development & Integration
+Course Final Project <br>
+Faculty of Science, Ontario Tech University <br>
+April 14, 2022 <br>
+
+## Project Group 13:
+
     - Preet Panchal ([preet-panchal](https://github.com/preet-panchal))
       
     - Eihab Syed ([EihabSyed](https://github.com/EihabSyed))
