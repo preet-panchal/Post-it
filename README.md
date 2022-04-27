@@ -19,6 +19,7 @@ Inspired by renowned platforms like Twitter and Reddit, Post-It is a web-based a
 
 ## Stack:
 MongoDB, Express, Vue, Node (MEVN)
+Node version 16.1.0
 
 ## How to Run:
 1) Clone repo or download ZIP folder
@@ -29,7 +30,8 @@ MongoDB, Express, Vue, Node (MEVN)
 6) Install dependencies in server: `npm install`
 7) Run app using: `npm run deploy`
 8) Now the application should be running on `port 3000`. You may access the app on `http://localhost:3000/`
+9) **Log-in:** `test@test.com` **Password:** `test1234` 
 
 ## Demo:
 Please watch this short demo video to get help running the app or
-simply view the app: https://www.youtube.com/watch?v=H-XyoPv3EuY
+simply view the app: https://www.youtube.com/watch?v=WcF2pAM4968
