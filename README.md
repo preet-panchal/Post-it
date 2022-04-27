@@ -24,10 +24,11 @@ MongoDB, Express, Vue, Node (MEVN)
 1) Clone repo or download ZIP folder
 2) Open new terminal
 3) Locate client directory: `cd client`
-4) Install dependencies: `npm install`
+4) Install dependencies in client: `npm install`
 5) Locate server directory: `cd ../server`
-6) Run app using: `npm run deploy`
-7) Now the application should be running on `port 3000`. You may access the app on `http://localhost:3000/`
+6) Install dependencies in server: `npm install`
+7) Run app using: `npm run deploy`
+8) Now the application should be running on `port 3000`. You may access the app on `http://localhost:3000/`
 
 ## Demo:
 Please watch this short demo video to get help running the app or
