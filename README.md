@@ -14,30 +14,20 @@ April 27, 2022 <br>
 | Kaathihan Luxmachandran | 100704762 | [Kaathihan](https://github.com/Kaathihan) |
 | Sukhpreet Bansal | 100705684 | [Sukhpreet-7](https://github.com/Sukhpreet-7) |
 
-# How to run
-cd into client and run npm install
-cd into server and run npm install
-While still in server run npm run deploy to concurrently run client and server
-
 ## About Post-It:
-is a simple mock application of GitHub Desktop. In CSCI2020U, we
-learned about File IO, Multithreading and Sockets. Using JavaFX and Gradle,
-our group decided to take inspiration from the GitHub desktop app to create
-a simple gradle app which supports Client/Server architecture. GitMock allows
-all users to connect to a specific server and use GitHub commands such as:
-Git `push`, `pull` and `fetch` to move and update files from the Local repo
-and Remote repo.
+Inspired by renowned platforms like Twitter and Reddit, Post-It is a web-based application that we developed to allow complete freedom of speech and to speak whatever is on your mind. Users sign up for accounts for free and create posts for others to see. Post-It lets users tell their stories with passion and save the moments that matter. So, what's the hold-up? Start posting now!
+
+## Stack:
+MongoDB, Express, Vue, Node (MEVN)
 
 ## How to Run:
-**Application Build:** Java version 17.0.2, Gradle version 7.3.3
-
 1) Clone repo or download ZIP folder
-2) Open project via IntelliJ IDEA (https://www.jetbrains.com/idea/)
-3) Within project structure (on the left hand side) and expand src/main/java:
-    1) Right-click on FileServer and select `Run 'FileServer.main()`
-    2) Right-click on Main and select `Run 'Main.main()'`
-4) Now the application should be running on `port 8081`. You may now make changes
-   to your local repo files inside the `ClientFiles` folder.
+2) Open new terminal
+3) Locate client directory: `cd client`
+4) Install dependencies: `npm install`
+5) Locate server directory: `cd ../server`
+6) Run app using: `npm run deploy`
+7) Now the application should be running on `port 3000`. You may access the app on `http://localhost:3000/`
 
 ## Demo:
 Please watch this short demo video to get help running the app or
