@@ -15,7 +15,7 @@ April 27, 2022 <br>
 | Sukhpreet Bansal | 100705684 | [Sukhpreet-7](https://github.com/Sukhpreet-7) |
 
 ## About Post-It:
-Inspired by renowned platforms like Twitter and Reddit, Post-It is a web-based application that we developed to allow complete freedom of speech and to speak whatever is on your mind. Users sign up for accounts for free and create posts for others to see. Post-It lets users tell their stories with passion and save the moments that matter. So, what's the hold-up? Start posting now!
+Inspired by renowned platforms like Twitter and Reddit, Post-It is a web-based application that we developed to allow complete freedom of speech and to speak whatever is on your mind. Users can sign up for accounts for free and create posts for others to see. Post-It lets users share their stories with passion and save the moments that really matter. So, what's the hold-up? Start posting now!
 
 ## Stack:
 MongoDB, Express, Vue, Node (MEVN)
